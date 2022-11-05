@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject EnemyPrefab;
+    [SerializeField] private GameObject enemyPrefab;
 
-    private GameObject EnemySpawned;
+    private GameObject enemySpawned;
 
     // Start is called before the first frame update
     void Start()
     {
-        EnemySpawned = Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+        enemySpawned = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (EnemySpawned == null)
+        if (enemySpawned == null)
         {
-            EnemySpawned = Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+            enemySpawned = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         }
     }
 }

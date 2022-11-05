@@ -6,12 +6,12 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     protected int HP;
-    [SerializeField] protected int MaxHP;
+    [SerializeField] protected int maxHP;
 
     // Start is called before the first frame update
     void Start()
     {
-        HP = MaxHP;
+        HP = maxHP;
     }
 
     // Update is called once per frame
