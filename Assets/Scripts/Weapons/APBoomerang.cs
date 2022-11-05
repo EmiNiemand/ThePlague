@@ -6,26 +6,50 @@ using UnityEngine.InputSystem;
 
 public class APBoomerang : AttackPattern
 {
-    private Vector3 cursorPos;
-    private Camera mainCam;
-    
-    private void Start()
-    {
-        mainCam = Camera.main;
-        
-    }
+	private Vector3 cursorPos;
+	private Camera mainCam;
 
-    public override IEnumerator StartPattern()
-    {
-        cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+	[Range(0.0f, 1.0f)]
+	[SerializeField] private float speed;
+    [SerializeField] protected int damage;
+	
+	private void Start()
+	{
+		Setup();
 
-        yield return new WaitUntil(()=>isOnPosition(cursorPos));
+		mainCam = Camera.main;
+	}
 
-    }
-    
-    bool isOnPosition(Vector3 destination)
-    {
-        transform.position = Vector3.Lerp(transform.position, destination, 0.2f);
-        return Vector3.Distance(transform.position, destination) < 0.1f;
-    }
+	public override IEnumerator StartPattern()
+	{
+		if(isOnCooldown) yield break; 
+		
+		StartCoroutine(Cooldown());
+
+		weaponInstance = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
+		weaponInstance.GetComponent<WeaponHitDetect>().pattern = this;
+		cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+		cursorPos.z = 0;
+
+		yield return new WaitUntil(()=>isOnPosition(cursorPos));
+		yield return new WaitUntil(()=>isOnPosition(transform.position));
+		Destroy(weaponInstance);
+	}
+
+	protected override IEnumerator Cooldown()
+	{
+		isOnCooldown = true;
+		yield return new WaitUntil(()=>weaponInstance == null);
+		yield return new WaitForSeconds(0.5f);
+		isOnCooldown = false;
+	}
+
+	
+	private bool isOnPosition(Vector3 destination)
+	{
+		weaponInstance.transform.position = Vector3.MoveTowards(weaponInstance.transform.position, destination, speed);
+		weaponInstance.transform.Rotate(0, 0, 100.0f);
+
+		return Vector3.Distance(weaponInstance.transform.position, destination) < 0.1f;
+	}
 }

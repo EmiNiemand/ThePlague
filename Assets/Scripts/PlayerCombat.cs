@@ -32,7 +32,7 @@ public class PlayerCombat : MonoBehaviour
 		playerSprite.transform.up = lerpCursorPos - playerSprite.transform.position;
 	}
 
-	void OnAttack()
+	public void OnAttack(InputAction.CallbackContext context)
 	{
 		playerWeapon.Attack();
 	}
