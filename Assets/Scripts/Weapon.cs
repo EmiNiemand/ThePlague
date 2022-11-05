@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 
 public class Weapon : MonoBehaviour
 {
+	GamepadHaptics haptics;
+
 	// bool needed to check collisions
 	bool isAttacking = false;
-	SpriteShapeRenderer spriteShapeRenderer;
 	// Start is called before the first frame update
 	void Start()
 	{
-		spriteShapeRenderer = GetComponent<SpriteShapeRenderer>();
+		haptics = GetComponentInParent<GamepadHaptics>();
 	}
 
 	public void Attack()
@@ -23,12 +24,11 @@ public class Weapon : MonoBehaviour
 	IEnumerator AttackCoroutine()
 	{
 		isAttacking = true;
-		spriteShapeRenderer.enabled = true;
+		GetComponent<SpriteShapeRenderer>().enabled = true;
 
 		yield return new WaitForSeconds(1.0f);
 
-		/*Gamepad.current.SetMotorSpeeds(0, 0);*/
-		spriteShapeRenderer.enabled = false;
+		GetComponent<SpriteShapeRenderer>().enabled = false;
 		isAttacking = false;
 	}
 
@@ -36,8 +36,7 @@ public class Weapon : MonoBehaviour
 	{
 		if(isAttacking && other.transform.tag == "Enemy")
 		{
-			Debug.Log("siema");
-			/*Gamepad.current.SetMotorSpeeds(0.5f, 0.5f);*/
+			StartCoroutine(haptics.Attack());
 			// other.transform.GetComponent<Enemy>().Damage;
 		}
 	}
