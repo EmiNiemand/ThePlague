@@ -11626,11 +11626,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &944849976 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3782817786426503377, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
-  m_PrefabInstance: {fileID: 3782817787092301033}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1221335906
 GameObject:
   m_ObjectHideFlags: 0
@@ -14043,63 +14038,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1001 &1667322404
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 944849976}
-    m_Modifications:
-    - target: {fileID: 1680785177784905081, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_Name
-      value: BSFusion
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.64022666
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5494013
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0041075293
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680785177784905083, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
 --- !u!1 &1916746832
 GameObject:
   m_ObjectHideFlags: 0
@@ -14158,6 +14096,50 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: firstWeapon
+      value: Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: secondWeapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.data[0].name
+      value: Scythe
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.data[1].name
+      value: Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.data[2].name
+      value: ScytheBoomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.data[3].name
+      value: BoomerangScythe
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.data[0].weaponPrefab
+      value: 
+      objectReference: {fileID: 2533782196553314095, guid: cfbb23eb61ddc9f489d31b08c32d77f9, type: 3}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.data[1].weaponPrefab
+      value: 
+      objectReference: {fileID: 3690965239533586678, guid: 20b645bc34efc844c8db752c39559aed, type: 3}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.data[2].weaponPrefab
+      value: 
+      objectReference: {fileID: 8400326717329953454, guid: 997ef49db9d6fe541b80d3b6c655c8f5, type: 3}
+    - target: {fileID: 3782817786426503376, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: weapons.Array.data[3].weaponPrefab
+      value: 
+      objectReference: {fileID: 1680785177784905081, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
     - target: {fileID: 3782817786780378866, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_Name
       value: Player

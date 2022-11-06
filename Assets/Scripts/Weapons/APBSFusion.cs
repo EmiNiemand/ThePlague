@@ -13,7 +13,7 @@ public class APBSFusion : AttackPattern
 
     private void Start()
     {
-        Setup();
+        Setup("BoomerangScythe");
 
         mainCam = Camera.main;
     }

@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public abstract class AttackPattern : MonoBehaviour
 {
+	public string weaponName;
+
 	protected GamepadHaptics haptics;
 	protected bool isOnCooldown;
 	protected GameObject weaponInstance;
@@ -21,8 +24,9 @@ public abstract class AttackPattern : MonoBehaviour
 		haptics.Attack();
 	}
 
-    protected void Setup()
+    protected void Setup(string name)
     {
+		weaponName = name;
 		haptics = GetComponentInParent<GamepadHaptics>();
 		isOnCooldown = false;
     }
