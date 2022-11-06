@@ -13,7 +13,7 @@ public class APSBFusion : AttackPattern
 
     private void Start()
 	{
-		Setup("ScytheBoomerang");
+		Setup();
 
 		GetComponent<WeaponHitDetect>().pattern = this;
 

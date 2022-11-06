@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9727f2df7cbcd42a2bc17db170ae38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponIcon: {fileID: 21300000, guid: 7af0159223e0eff408cdb4896c5145ad, type: 3}
   weaponPrefab: {fileID: 3177829668862348775, guid: 44187963bb86b484895ffd3eb5ee53e5, type: 3}
   damage: 1
   cooldownDuration: 0.25

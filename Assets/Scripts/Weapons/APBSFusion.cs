@@ -13,7 +13,7 @@ public class APBSFusion : AttackPattern
 
     private void Start()
     {
-        Setup("BoomerangScythe");
+		Setup();
 
         mainCam = Camera.main;
     }
@@ -22,11 +22,13 @@ public class APBSFusion : AttackPattern
     {
         if (isOnCooldown) yield break;
         if (weaponInstance != null) yield break;
-
-        StartCoroutine(Cooldown());
+        
+        isOnCooldown = true;
 
         weaponInstance = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
         weaponInstance.GetComponent<WeaponHitDetect>().pattern = this;
+
+        StartCoroutine(Cooldown());
 
 		weaponIndicator.targetObject = weaponInstance;
 
@@ -43,7 +45,6 @@ public class APBSFusion : AttackPattern
 
     protected override IEnumerator Cooldown()
     {
-        isOnCooldown = true;
         yield return new WaitUntil(() => weaponInstance == null);
         yield return new WaitForSeconds(cooldownDuration);
         isOnCooldown = false;

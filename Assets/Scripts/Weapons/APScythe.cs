@@ -13,7 +13,7 @@ public class APScythe : AttackPattern
 
     private void Start()
 	{
-		Setup("Scythe");
+		Setup();
 
 		GetComponent<WeaponHitDetect>().pattern = this;
 

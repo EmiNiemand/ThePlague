@@ -5,10 +5,10 @@ using UnityEngine;
 
 public abstract class AttackPattern : MonoBehaviour
 {
-	public string weaponName;
+	public Sprite weaponIcon;
 
 	protected GamepadHaptics haptics;
-	protected bool isOnCooldown;
+	public bool isOnCooldown;
 	protected GameObject weaponInstance;
 	[SerializeField] protected GameObject weaponPrefab;
     [SerializeField] protected int damage;
@@ -24,9 +24,8 @@ public abstract class AttackPattern : MonoBehaviour
 		haptics.Attack();
 	}
 
-    protected void Setup(string name)
+    protected void Setup()
     {
-		weaponName = name;
 		haptics = GetComponentInParent<GamepadHaptics>();
 		isOnCooldown = false;
     }

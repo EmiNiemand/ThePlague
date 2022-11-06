@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8400326717329953448}
   - component: {fileID: 8400326717329953445}
   m_Layer: 0
-  m_Name: SBFusion
+  m_Name: ScytheBoomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,9 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfed1d5269dffce4096ed9d4db578daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: 
   weaponPrefab: {fileID: 0}
   damage: 5
   cooldownDuration: 0.5
+  weaponIndicator: {fileID: 0}
   attackDuration: 0.2
 --- !u!114 &8400326717329953444
 MonoBehaviour:

@@ -4,26 +4,22 @@ using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.InputSystem;
 
-[System.Serializable]
-public struct WeaponList
-{
-	public string name;
-	public GameObject weaponPrefab;
-}
+
 
 public class Weapon : MonoBehaviour
 {
 	//temp
-	public string firstWeapon;
-	public string secondWeapon;
+	private string firstWeapon;
+	private string secondWeapon;
 	public AttackPattern equippedWeapon;
-	[SerializeField] private List<WeaponList> weapons;
-	[SerializeField] protected WeaponIndicator weaponIndicator;
+	[SerializeField] private List<GameObject> weapons;
+	[SerializeField] private WeaponIndicator weaponIndicator;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		SelectWeapon(firstWeapon, secondWeapon);
+		firstWeapon = "";
+		secondWeapon = "";
     }
 
 	public void Attack()
@@ -34,17 +30,47 @@ public class Weapon : MonoBehaviour
         }
     }
 
-	private void SelectWeapon(string firstWeapon, string secondWeapon)
+	private void SelectWeapon()
 	{
+		if(equippedWeapon != null)
+		{
+			Destroy(equippedWeapon.gameObject);
+			equippedWeapon = null;
+		}
+
 		string fusionName = firstWeapon + secondWeapon;
 		Debug.Log(fusionName);
-		foreach (WeaponList weapon in weapons)
+		foreach (GameObject weapon in weapons)
 		{
 			if(weapon.name == fusionName)
 			{
-				equippedWeapon = Instantiate(weapon.weaponPrefab, transform.position, Quaternion.identity, transform).GetComponent<AttackPattern>();
+				equippedWeapon = Instantiate(weapon, transform).GetComponent<AttackPattern>();
 				equippedWeapon.weaponIndicator = weaponIndicator;
 			}
 		}
+	}
+
+	public bool EquipWeapon(string weaponName)
+	{
+		if(weaponName.Equals(firstWeapon) || weaponName.Equals(secondWeapon))
+			return false;
+
+		secondWeapon = firstWeapon;
+		firstWeapon = weaponName;
+		SelectWeapon();
+
+		return true;
+	}
+
+	public bool SwitchWeapons()
+	{
+		if(firstWeapon == "" || secondWeapon == "" || equippedWeapon.isOnCooldown) return false;
+
+		string temp = secondWeapon;
+		secondWeapon = firstWeapon;
+		firstWeapon = temp;
+		SelectWeapon();
+
+		return true;
 	}
 }

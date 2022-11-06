@@ -14,7 +14,7 @@ public class APBoomerang : AttackPattern
 
     private void Start()
 	{
-		Setup("Boomerang");
+		Setup();
 
 		mainCam = Camera.main;
 	}

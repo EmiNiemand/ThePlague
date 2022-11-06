@@ -48,9 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7679bcd3569f3e14fa5021993fe07e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponIcon: {fileID: 21300000, guid: 12b1e742287bad944951f4624141c39f, type: 3}
   weaponPrefab: {fileID: 0}
   damage: 3
   cooldownDuration: 0.5
+  weaponIndicator: {fileID: 0}
   attackDuration: 1
 --- !u!114 &7438095833193268357
 MonoBehaviour:

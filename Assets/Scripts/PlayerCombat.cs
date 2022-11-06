@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-	GameObject playerSprite;
-	Camera mainCam;
-	Weapon playerWeapon;
-	Vector3 cursorPos, lerpCursorPos;
+	private Camera mainCam;
+	private Vector3 cursorPos, lerpCursorPos;
+	private GameObject playerSprite;
+	private Weapon playerWeapon;
+	private GameUI gameUI;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -19,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
 		lerpCursorPos = cursorPos;
 
 		playerWeapon = GetComponentInChildren<Weapon>();
+		gameUI = GameObject.Find("_GameUI").GetComponent<GameUI>();
 	}
 
 
@@ -32,8 +35,24 @@ public class PlayerCombat : MonoBehaviour
 		playerSprite.transform.up = lerpCursorPos - playerSprite.transform.position;
 	}
 
+	public bool EquipWeapon(GameObject weaponPrefab)
+	{
+		if(playerWeapon.EquipWeapon(weaponPrefab.name))
+		{
+			gameUI.EquipWeapon(weaponPrefab.GetComponent<AttackPattern>().weaponIcon);
+			return true;
+		}
+		return false;
+    }
+
 	public void OnAttack(InputAction.CallbackContext context)
 	{
 		playerWeapon.Attack();
+	}
+
+	public void OnSwitchWeapon(InputAction.CallbackContext context)
+	{
+		if(playerWeapon.SwitchWeapons())
+			gameUI.SwitchWeapons();
 	}
 }
