@@ -13,9 +13,16 @@ public class Weapon : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		pattern = GetComponentInChildren<AttackPattern>();
-		pattern.weaponIndicator = weaponIndicator;
-	}
+        if (GetComponentInChildren<AttackPattern>() != null)
+        {
+            pattern = GetComponentInChildren<AttackPattern>();
+            pattern.weaponIndicator = weaponIndicator;
+        }
+        else
+        {
+            pattern = null;
+        }
+    }
 
 	public void Attack()
 	{
