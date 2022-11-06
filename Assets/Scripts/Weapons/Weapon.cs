@@ -19,6 +19,9 @@ public class Weapon : MonoBehaviour
 
 	public void Attack()
 	{
-		StartCoroutine(pattern.StartPattern());
-	}
+        if (pattern != null)
+        {
+            StartCoroutine(pattern.StartPattern());
+        }
+    }
 }
