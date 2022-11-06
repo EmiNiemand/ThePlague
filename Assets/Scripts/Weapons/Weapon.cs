@@ -8,10 +8,13 @@ public class Weapon : MonoBehaviour
 {
 	private AttackPattern pattern;
 
+	[SerializeField] protected WeaponIndicator weaponIndicator;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		pattern = GetComponentInChildren<AttackPattern>();
+		pattern.weaponIndicator = weaponIndicator;
 	}
 
 	public void Attack()

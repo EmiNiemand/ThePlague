@@ -22,17 +22,22 @@ public class APBoomerang : AttackPattern
 	public override IEnumerator StartPattern()
 	{
 		if(isOnCooldown) yield break;
-        if (weaponInstance != null) yield break;
+        if(weaponInstance != null) yield break;
 
         StartCoroutine(Cooldown());
 
 		weaponInstance = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
 		weaponInstance.GetComponent<WeaponHitDetect>().pattern = this;
+
+		weaponIndicator.targetObject = weaponInstance;
+		
 		cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 		cursorPos.z = 0;
 
 		yield return new WaitUntil(()=>isOnPosition(cursorPos));
 		yield return new WaitUntil(()=>isOnPosition(transform.position));
+
+		weaponIndicator.targetObject = null;
 		Destroy(weaponInstance);
 	}
 

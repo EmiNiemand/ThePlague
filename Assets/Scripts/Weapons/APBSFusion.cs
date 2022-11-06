@@ -27,12 +27,17 @@ public class APBSFusion : AttackPattern
 
         weaponInstance = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
         weaponInstance.GetComponent<WeaponHitDetect>().pattern = this;
+
+		weaponIndicator.targetObject = weaponInstance;
+
         cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         cursorPos.z = 0;
 
         yield return new WaitUntil(() => isOnPosition(cursorPos));
         yield return speenOnPosition();
         yield return new WaitUntil(() => isOnPosition(transform.position));
+
+		weaponIndicator.targetObject = null;
         Destroy(weaponInstance);
     }
 

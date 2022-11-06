@@ -11,6 +11,7 @@ public abstract class AttackPattern : MonoBehaviour
     [SerializeField] protected int damage;
     [Range(0, 2.0f)]
     [SerializeField] protected float cooldownDuration;
+	[HideInInspector] public WeaponIndicator weaponIndicator;
 
     public abstract IEnumerator StartPattern();
     protected abstract IEnumerator Cooldown();
