@@ -11,7 +11,6 @@ public class APBoomerang : AttackPattern
 
 	[Range(0.0f, 1.0f)]
 	[SerializeField] private float speed;
-    [SerializeField] protected int damage;
 	
 	private void Start()
 	{
