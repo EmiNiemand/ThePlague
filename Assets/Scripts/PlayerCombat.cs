@@ -36,4 +36,12 @@ public class PlayerCombat : MonoBehaviour
 	{
 		playerWeapon.Attack();
 	}
+
+	public void EquipWeapon(GameObject weaponPrefab)
+	{
+		Debug.Log(weaponPrefab.name);
+		//equip weapon here
+        Instantiate(weaponPrefab, playerWeapon.transform.position, playerWeapon.transform.rotation, playerWeapon.transform);
+		playerWeapon.SetUp();
+    }
 }

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector2 MoveAxis;
     Rigidbody2D Rigidbody;
+    public bool isUsePressed = false;
 
     [SerializeField] private float MoveSpeed;
     // Start is called before the first frame update
@@ -31,5 +32,17 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveAxis = context.ReadValue<Vector2>();
+    }
+
+    public void OnUse(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isUsePressed = true;
+        }
+        else if (context.canceled)
+        {
+            isUsePressed = false;
+        }
     }
 }

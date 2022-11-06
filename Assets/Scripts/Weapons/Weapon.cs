@@ -13,6 +13,19 @@ public class Weapon : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+        SetUp();
+    }
+
+	public void Attack()
+	{
+        if (pattern != null)
+        {
+            StartCoroutine(pattern.StartPattern());
+        }
+    }
+
+    public void SetUp()
+    {
         if (GetComponentInChildren<AttackPattern>() != null)
         {
             pattern = GetComponentInChildren<AttackPattern>();
@@ -21,14 +34,6 @@ public class Weapon : MonoBehaviour
         else
         {
             pattern = null;
-        }
-    }
-
-	public void Attack()
-	{
-        if (pattern != null)
-        {
-            StartCoroutine(pattern.StartPattern());
         }
     }
 }
