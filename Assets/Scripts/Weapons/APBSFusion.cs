@@ -31,7 +31,7 @@ public class APBSFusion : AttackPattern
         cursorPos.z = 0;
 
         yield return new WaitUntil(() => isOnPosition(cursorPos));
-        yield return new WaitUntil(() => speenOnPosition());
+        yield return speenOnPosition();
         yield return new WaitUntil(() => isOnPosition(transform.position));
         Destroy(weaponInstance);
     }
@@ -53,16 +53,15 @@ public class APBSFusion : AttackPattern
         return Vector3.Distance(weaponInstance.transform.position, destination) < 0.1f;
     }
 
-    private bool speenOnPosition()
+    private IEnumerator speenOnPosition()
     {
         float timePassed = 0;
 
-        while (timePassed < 200000)
+        while (timePassed < 2)
         {
             weaponInstance.transform.Rotate(0, 0, 100.0f);
             timePassed += Time.smoothDeltaTime;
+            yield return null;
         }
-
-        return true;
     }
 }
