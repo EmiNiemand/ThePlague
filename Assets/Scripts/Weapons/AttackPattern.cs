@@ -9,6 +9,8 @@ public abstract class AttackPattern : MonoBehaviour
 	protected GameObject weaponInstance;
 	[SerializeField] protected GameObject weaponPrefab;
     [SerializeField] protected int damage;
+    [Range(0, 2.0f)]
+    [SerializeField] protected float cooldownDuration;
 
     public abstract IEnumerator StartPattern();
     protected abstract IEnumerator Cooldown();

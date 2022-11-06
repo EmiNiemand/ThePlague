@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 3177829668862348775, guid: 44187963bb86b484895ffd3eb5ee53e5, type: 3}
   damage: 1
+  cooldownDuration: 0.25
   speed: 0.1
-  damage: 1

@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 0}
-  damage: 10
+  damage: 3
+  cooldownDuration: 0.5
   attackDuration: 1
-  cooldownDuration: 0
 --- !u!114 &7438095833193268357
 MonoBehaviour:
   m_ObjectHideFlags: 0

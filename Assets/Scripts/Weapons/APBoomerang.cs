@@ -11,8 +11,8 @@ public class APBoomerang : AttackPattern
 
 	[Range(0.0f, 1.0f)]
 	[SerializeField] private float speed;
-	
-	private void Start()
+
+    private void Start()
 	{
 		Setup();
 
@@ -21,9 +21,10 @@ public class APBoomerang : AttackPattern
 
 	public override IEnumerator StartPattern()
 	{
-		if(isOnCooldown) yield break; 
-		
-		StartCoroutine(Cooldown());
+		if(isOnCooldown) yield break;
+        if (weaponInstance != null) yield break;
+
+        StartCoroutine(Cooldown());
 
 		weaponInstance = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
 		weaponInstance.GetComponent<WeaponHitDetect>().pattern = this;
@@ -39,7 +40,7 @@ public class APBoomerang : AttackPattern
 	{
 		isOnCooldown = true;
 		yield return new WaitUntil(()=>weaponInstance == null);
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(cooldownDuration);
 		isOnCooldown = false;
 	}
 

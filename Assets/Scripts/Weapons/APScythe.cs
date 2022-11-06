@@ -11,10 +11,7 @@ public class APScythe : AttackPattern
 	[Range(0, 1.0f)]
 	[SerializeField] private float attackDuration;
 
-	[Range(0, 2.0f)]
-	[SerializeField] private float cooldownDuration;
-
-	private void Start()
+    private void Start()
 	{
 		Setup();
 
