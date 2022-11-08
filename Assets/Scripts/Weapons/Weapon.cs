@@ -55,8 +55,20 @@ public class Weapon : MonoBehaviour
 		if(weaponName.Equals(firstWeapon) || weaponName.Equals(secondWeapon))
 			return false;
 
-		secondWeapon = firstWeapon;
-		firstWeapon = weaponName;
+		if(firstWeapon == "")
+		{
+			firstWeapon = weaponName;
+		}
+		else if(secondWeapon == "")
+		{
+			secondWeapon = weaponName;
+		}
+		else
+		{
+			secondWeapon = firstWeapon;
+			firstWeapon = weaponName;
+		}
+		
 		SelectWeapon();
 
 		return true;

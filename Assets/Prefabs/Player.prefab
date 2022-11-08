@@ -317,6 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e54c10c48420314c89ad5557e3a4a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equippedWeapon: {fileID: 0}
+  weapons: []
   weaponIndicator: {fileID: 2989288246587555316}
 --- !u!1 &2989288248492735027
 GameObject:
@@ -329,6 +331,7 @@ GameObject:
   - component: {fileID: 2989288248492735028}
   - component: {fileID: 2989288248492735029}
   - component: {fileID: 2989288248492735030}
+  - component: {fileID: 529339216092531469}
   - component: {fileID: 2989288248492735031}
   - component: {fileID: 2989288248492735024}
   - component: {fileID: 2989288248492735025}
@@ -383,6 +386,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUsePressed: 0
   MoveSpeed: 2
+--- !u!114 &529339216092531469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989288248492735027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b62aa8daec76a4ab5a46229cc8269d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  lerpValue: 0
+  mouseXBorder: 0
+  mouseYBorder: 0
 --- !u!114 &2989288248492735031
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8774,7 +8774,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8802,8 +8802,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1006696855}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525895408
 GameObject:
@@ -11856,11 +11856,6 @@ Transform:
   m_Father: {fileID: 1737494423}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1006696855 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2989288248492735028, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
-  m_PrefabInstance: {fileID: 2989288247754507171}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008637328
 GameObject:
   m_ObjectHideFlags: 0
@@ -14984,6 +14979,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 519420032}
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: lerpValue
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: mouseXBorder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: mouseYBorder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: cameraOffset.z
+      value: -15
+      objectReference: {fileID: 0}
     - target: {fileID: 2989288247351502887, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: weapons.Array.size
       value: 4
@@ -15048,6 +15067,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
       value: 1

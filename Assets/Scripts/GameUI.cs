@@ -8,14 +8,24 @@ public class GameUI : MonoBehaviour
     public Image firstWeaponImage;
     public Image secondWeaponImage;
     
+    //TODO: improve this spaghetti
     public void EquipWeapon(Sprite weaponImage)
     {
-        if(firstWeaponImage.sprite != null) {
-            secondWeaponImage.sprite = firstWeaponImage.sprite;
+        if(firstWeaponImage.sprite == null) 
+        {
+            firstWeaponImage.sprite = weaponImage;
+            firstWeaponImage.color = Color.white;
+        }
+        else if(secondWeaponImage.sprite == null)
+        {
+            secondWeaponImage.sprite = weaponImage;
             secondWeaponImage.color = Color.white;
         }
-        firstWeaponImage.sprite = weaponImage;
-        firstWeaponImage.color = Color.white;
+        else
+        {
+            secondWeaponImage.sprite = firstWeaponImage.sprite;
+            firstWeaponImage.sprite = weaponImage;
+        }
     }
 
     public void SwitchWeapons()
