@@ -7,8 +7,10 @@ public abstract class Enemy : MonoBehaviour
 {
     protected int HP;
     [SerializeField] protected int maxHP;
+    [SerializeField] protected int heal;
     [Space(10)]
     [SerializeField] private float cooldownTime = 1.0f;
+
     private bool isOnCooldown;
 
     // Start is called before the first frame update
@@ -16,6 +18,48 @@ public abstract class Enemy : MonoBehaviour
     {
         HP = maxHP;
         isOnCooldown = false;
+        if (heal > 0)
+        {
+            StartCoroutine(Heal());
+        }
+    }
+
+    private IEnumerator Heal()
+    {
+        yield return new WaitForSeconds(3);
+        if (HP != maxHP)
+        {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                //temp
+                spriteRenderer.color = Color.green;
+
+                yield return new WaitForSeconds(1);
+                OnHeal();
+
+                //temp
+                spriteRenderer.color = Color.white;
+            }
+            else
+            {
+                OnHeal();
+            }
+        }
+
+        StartCoroutine(Heal());
+    }
+
+    public void OnHeal()
+    {
+        if (HP + heal > maxHP)
+        {
+            HP = maxHP;
+        }
+        else
+        {
+            HP += heal;
+        }
     }
 
     public void OnReceiveDamage(int Damage)

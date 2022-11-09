@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfed1d5269dffce4096ed9d4db578daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponIcon: {fileID: 0}
+  isOnCooldown: 0
   weaponPrefab: {fileID: 0}
-  damage: 5
+  damage: 10
   cooldownDuration: 0.5
   weaponIndicator: {fileID: 0}
   attackDuration: 0.2

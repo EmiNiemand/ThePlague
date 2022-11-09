@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,7 @@ public class PlayerCombat : MonoBehaviour
 	private GameObject playerSprite;
 	private Weapon playerWeapon;
 	private GameUI gameUI;
+    private PlayerUI playerUI;
 
 	// Start is called before the first frame update
 	void Start()
@@ -34,6 +36,11 @@ public class PlayerCombat : MonoBehaviour
 		//Rotate player towards cursor
 		playerSprite.transform.up = lerpCursorPos - playerSprite.transform.position;
 	}
+
+    public void PickUpIndicator(bool activate)
+    {
+		playerUI.OnPickUpIndicator(activate);
+    }
 
 	public bool EquipWeapon(GameObject weaponPrefab)
 	{
