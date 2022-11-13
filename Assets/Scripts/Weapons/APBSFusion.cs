@@ -10,12 +10,14 @@ public class APBSFusion : AttackPattern
 
     [Range(0.0f, 1.0f)]
     [SerializeField] private float speed;
+	private bool wallHitDetected;
 
     private void Start()
     {
 		Setup();
 
         mainCam = Camera.main;
+		wallHitDetected = false;
     }
 
     public override IEnumerator StartPattern()
@@ -35,9 +37,10 @@ public class APBSFusion : AttackPattern
         cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         cursorPos.z = 0;
 
-        yield return new WaitUntil(() => isOnPosition(cursorPos));
+        yield return new WaitUntil(() => isOnPosition(cursorPos) || wallHitDetected);
         yield return speenOnPosition();
         yield return new WaitUntil(() => isOnPosition(transform.position));
+		wallHitDetected = false;
 
 		weaponIndicator.targetObject = null;
         Destroy(weaponInstance);
@@ -70,4 +73,9 @@ public class APBSFusion : AttackPattern
             yield return null;
         }
     }
+
+    public override void WallHit()
+	{
+		wallHitDetected = true;
+	}
 }

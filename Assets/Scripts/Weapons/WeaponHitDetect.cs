@@ -15,4 +15,13 @@ public class WeaponHitDetect : MonoBehaviour
             pattern.WeaponHitDetected(other.gameObject.GetComponent<Enemy>());
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("ayo");
+        if(other.CompareTag("Environment"))
+        {
+            pattern.WallHit();
+        }
+    }
 }

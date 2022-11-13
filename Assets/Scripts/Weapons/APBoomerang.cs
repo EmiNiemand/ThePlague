@@ -11,12 +11,14 @@ public class APBoomerang : AttackPattern
 
 	[Range(0.0f, 1.0f)]
 	[SerializeField] private float speed;
+	private bool wallHitDetected;
 
     private void Start()
 	{
 		Setup();
 
 		mainCam = Camera.main;
+		wallHitDetected = false;
 	}
 
 	public override IEnumerator StartPattern()
@@ -34,8 +36,9 @@ public class APBoomerang : AttackPattern
 		cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 		cursorPos.z = 0;
 
-		yield return new WaitUntil(()=>isOnPosition(cursorPos));
+		yield return new WaitUntil(()=>isOnPosition(cursorPos) || wallHitDetected);
 		yield return new WaitUntil(()=>isOnPosition(transform.position));
+		wallHitDetected = false;
 
 		weaponIndicator.targetObject = null;
 		Destroy(weaponInstance);
@@ -56,5 +59,10 @@ public class APBoomerang : AttackPattern
 		weaponInstance.transform.Rotate(0, 0, 100.0f);
 
 		return Vector3.Distance(weaponInstance.transform.position, destination) < 0.1f;
+	}
+
+	public override void WallHit()
+	{
+		wallHitDetected = true;
 	}
 }
