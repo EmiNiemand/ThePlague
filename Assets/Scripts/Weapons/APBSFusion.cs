@@ -8,8 +8,8 @@ public class APBSFusion : AttackPattern
     private Vector3 cursorPos;
     private Camera mainCam;
 
-    [Range(0.0f, 1.0f)]
-    [SerializeField] private float speed;
+	[Range(0.0f, 20.0f)]
+    [SerializeField] private int speed;
 	private bool wallHitDetected;
 
     private void Start()
@@ -56,8 +56,8 @@ public class APBSFusion : AttackPattern
 
     private bool isOnPosition(Vector3 destination)
     {
-        weaponInstance.transform.position = Vector3.MoveTowards(weaponInstance.transform.position, destination, speed);
-        weaponInstance.transform.Rotate(0, 0, 100.0f);
+        weaponInstance.transform.position = Vector3.MoveTowards(weaponInstance.transform.position, destination, speed * Time.deltaTime * 4);
+        weaponInstance.transform.Rotate(0, 0, speed * Time.deltaTime * 400);
 
         return Vector3.Distance(weaponInstance.transform.position, destination) < 0.1f;
     }
@@ -68,7 +68,7 @@ public class APBSFusion : AttackPattern
 
         while (timePassed < 2)
         {
-            weaponInstance.transform.Rotate(0, 0, 100.0f);
+            weaponInstance.transform.Rotate(0, 0, speed * Time.deltaTime * 400);
             timePassed += Time.smoothDeltaTime;
             yield return null;
         }

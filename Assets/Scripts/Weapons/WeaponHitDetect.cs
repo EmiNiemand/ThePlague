@@ -18,7 +18,6 @@ public class WeaponHitDetect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("ayo");
         if(other.CompareTag("Environment"))
         {
             pattern.WallHit();

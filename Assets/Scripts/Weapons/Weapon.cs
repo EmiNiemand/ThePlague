@@ -39,7 +39,6 @@ public class Weapon : MonoBehaviour
 		}
 
 		string fusionName = firstWeapon + secondWeapon;
-		Debug.Log(fusionName);
 		foreach (GameObject weapon in weapons)
 		{
 			if(weapon.name == fusionName)

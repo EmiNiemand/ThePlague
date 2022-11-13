@@ -18,7 +18,7 @@ public abstract class AttackPattern : MonoBehaviour
 
     public abstract IEnumerator StartPattern();
     protected abstract IEnumerator Cooldown();
-	public virtual void WallHit() { Debug.Log("siema"); }
+	public virtual void WallHit() {}
     public void WeaponHitDetected(Enemy enemy)
 	{
 		enemy.OnReceiveDamage(damage);
