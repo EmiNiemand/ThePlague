@@ -10,11 +10,11 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         pickUpIndicator = transform.Find("PickUpIndicator").gameObject;
-        pickUpIndicator.active = false;
+        pickUpIndicator.SetActive(false);
     }
 
     public void OnPickUpIndicator(bool activate)
     {
-        pickUpIndicator.active = activate;
+        pickUpIndicator.SetActive(activate);
     }
 }

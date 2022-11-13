@@ -24,6 +24,7 @@ public class PlayerCombat : MonoBehaviour
 
 		playerWeapon = GetComponentInChildren<Weapon>();
 		gameUI = GameObject.Find("_GameUI").GetComponent<GameUI>();
+		playerUI = GetComponentInChildren<PlayerUI>();
 	}
 
 
