@@ -51,10 +51,10 @@ MonoBehaviour:
   weaponIcon: {fileID: 21300000, guid: 12b1e742287bad944951f4624141c39f, type: 3}
   isOnCooldown: 0
   weaponPrefab: {fileID: 0}
-  damage: 3
+  damage: 6
   cooldownDuration: 0.5
   weaponIndicator: {fileID: 0}
-  attackDuration: 1
+  attackDuration: 0.5
 --- !u!114 &7438095833193268357
 MonoBehaviour:
   m_ObjectHideFlags: 0

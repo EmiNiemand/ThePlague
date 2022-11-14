@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected int heal;
     [Space(10)]
     [SerializeField] private float cooldownTime = 1.0f;
+    Slider barHP;
 
     private bool isOnCooldown;
 
@@ -22,6 +24,10 @@ public abstract class Enemy : MonoBehaviour
         {
             StartCoroutine(Heal());
         }
+
+        barHP = GetComponentInChildren<Slider>();
+        barHP.maxValue = maxHP;
+        barHP.value = HP;
     }
 
     private IEnumerator Heal()
@@ -55,10 +61,12 @@ public abstract class Enemy : MonoBehaviour
         if (HP + heal > maxHP)
         {
             HP = maxHP;
+            barHP.value = HP;
         }
         else
         {
             HP += heal;
+            barHP.value = HP;
         }
     }
 
@@ -69,6 +77,7 @@ public abstract class Enemy : MonoBehaviour
         StartCoroutine(DamageCooldown());
 
         HP -= Damage;
+        barHP.value = HP;
         if (HP <= 0)
         {
             OnDie();
