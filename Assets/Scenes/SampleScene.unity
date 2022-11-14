@@ -197,7 +197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -58.99994, y: 44.99997}
+  m_AnchoredPosition: {x: -59, y: 45}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &128848921
@@ -15455,8 +15455,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -7.608}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.58, y: 6.3}
-  m_SizeDelta: {x: 672.0833, y: 196.9044}
+  m_AnchoredPosition: {x: 4.8785, y: 5.963}
+  m_SizeDelta: {x: 729.5305, y: 243.6112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798738095
 MonoBehaviour:
@@ -15491,9 +15491,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[Q] - Swap Weapons
-
-    [R] - Restart level'
+  m_Text: "    [Q] - Swap Weapons\n    [R] - Restart level\n[Esc] - Quit"
 --- !u!222 &1798738096
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16246,6 +16244,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: mouseLerp
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: cameraLerp
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: mouseXBorder
       value: 10
       objectReference: {fileID: 0}
@@ -16256,6 +16262,10 @@ PrefabInstance:
     - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: cameraOffset.z
       value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 529339216092531469, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: cameraFollowStrength
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2989288247351502887, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: weapons.Array.size
@@ -16327,15 +16337,23 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_ActionId
       value: 0022d952-4a1a-4cf4-abaa-c26dbae96c96
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 35651c19-116c-4e2f-a569-26d47d72ba5b
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_ActionName
       value: Gameplay/Reset[/Keyboard/r]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: Gameplay/Quit[/Keyboard/escape]
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
@@ -16343,6 +16361,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
@@ -16354,11 +16376,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1200252131}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1200252131}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1200252131}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
@@ -16370,12 +16400,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnSwitchWeapon
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnReset
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnQuit
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -16386,11 +16424,19 @@ PrefabInstance:
       value: PlayerCombat, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerCombat, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989288248492735031, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3782817786297622010, guid: 0fa1d2c933582724c83a2c338591c4fa, type: 3}

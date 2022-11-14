@@ -32,7 +32,7 @@ public abstract class Enemy : MonoBehaviour
 
     private IEnumerator Heal()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         if (HP != maxHP)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,7 +41,7 @@ public abstract class Enemy : MonoBehaviour
                 //temp
                 spriteRenderer.color = Color.green;
 
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0.5f);
                 OnHeal();
 
                 //temp

@@ -68,4 +68,9 @@ public class PlayerCombat : MonoBehaviour
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
+
+    public void OnQuit(InputAction.CallbackContext context)
+    {
+        Application.Quit(0);
+    }
 }

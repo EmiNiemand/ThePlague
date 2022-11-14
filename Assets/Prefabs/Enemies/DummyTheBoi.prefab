@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d795d457ad7a194ebd28928f00569cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  maxHP: 15
   heal: 10
   cooldownTime: 1
 --- !u!212 &8776289653987200350
