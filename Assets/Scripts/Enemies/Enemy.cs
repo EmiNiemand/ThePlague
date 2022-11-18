@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public abstract class Enemy : MonoBehaviour
 {
     protected int HP;
+    [SerializeField] protected int Damage;
     [SerializeField] protected int maxHP;
     [SerializeField] protected int heal;
     [Space(10)]
@@ -16,8 +17,9 @@ public abstract class Enemy : MonoBehaviour
     private bool isOnCooldown;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
+        this.gameObject.tag = "Enemy";
         HP = maxHP;
         isOnCooldown = false;
         if (heal > 0)

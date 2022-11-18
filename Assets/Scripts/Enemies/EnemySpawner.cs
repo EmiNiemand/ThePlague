@@ -5,21 +5,20 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
-
+    [SerializeField] private bool canRespawn;
+    private bool canSpawn = true;
     private GameObject enemySpawned;
-    private bool canSpawn;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         enemySpawned = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-        canSpawn = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemySpawned == null && canSpawn)
+        if (enemySpawned == null && canSpawn && canRespawn)
         {
             StartCoroutine(SpawnCooldown());
         }
@@ -29,8 +28,7 @@ public class EnemySpawner : MonoBehaviour
     {
         canSpawn = false;
         yield return new WaitForSeconds(1.0f);
-
-        enemySpawned = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         canSpawn = true;
+        enemySpawned = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
     }
 }
