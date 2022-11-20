@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 8776289653987200350}
   - component: {fileID: 8776289653987200351}
   - component: {fileID: 8776289653987200352}
+  - component: {fileID: 6461856407432386291}
   m_Layer: 0
   m_Name: DummyTheBoi
   m_TagString: Enemy
@@ -663,3 +664,30 @@ PolygonCollider2D:
       - {x: 0.18936372, y: -0.36344457}
       - {x: 0.050679654, y: -0.26662493}
       - {x: 0.15836537, y: 0.16964768}
+--- !u!114 &6461856407432386291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776289653987200356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.13121934, y: -0.64, z: 0}
+  - {x: -0.0880501, y: 0.6338329, z: 0}
+  - {x: 0.078799516, y: 0.64616704, z: 0}
+  - {x: 0.05413139, y: -0.6245824, z: 0}
+  m_ShapePathHash: 1101818306
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -29588
