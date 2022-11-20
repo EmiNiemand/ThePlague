@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 8776289653987200350}
   - component: {fileID: 8776289653987200351}
   - component: {fileID: 8776289653987200352}
+  - component: {fileID: 6796895983861023628}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Enemy
@@ -663,3 +664,38 @@ PolygonCollider2D:
       - {x: 0.18936372, y: -0.36344457}
       - {x: 0.050679654, y: -0.26662493}
       - {x: 0.15836537, y: 0.16964768}
+--- !u!114 &6796895983861023628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776289653987200356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.079054266, y: -0.2725352, z: 0}
+  - {x: -0.08593449, y: -0.19685318, z: 0}
+  - {x: -0.19278777, y: 0.18590754, z: 0}
+  - {x: -0.1168952, y: 0.40172315, z: 0}
+  - {x: -0.082493335, y: 0.6356484, z: 0}
+  - {x: 0.06887081, y: 0.62876827, z: 0}
+  - {x: 0.075750306, y: 0.40172338, z: 0}
+  - {x: 0.1515066, y: 0.1755873, z: 0}
+  - {x: 0.041348994, y: -0.1934131, z: 0}
+  - {x: 0.037908852, y: -0.26909515, z: 0}
+  - {x: 0.11707196, y: -0.62434393, z: 0}
+  - {x: -0.16565324, y: -0.63065624, z: 0}
+  m_ShapePathHash: 330390278
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 47542

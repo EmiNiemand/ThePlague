@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 203545466310833696}
   - component: {fileID: 7904893451718597794}
   - component: {fileID: 8911308869412967760}
+  - component: {fileID: -2749472937741115830}
   m_Layer: 0
   m_Name: ScytheThrow
   m_TagString: Untagged
@@ -150,3 +151,36 @@ PolygonCollider2D:
       - {x: -0.32999998, y: -0.55}
       - {x: -0.31, y: -0.39999998}
       - {x: -0.32, y: 0.06}
+--- !u!114 &-2749472937741115830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407843021204052685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.48092538, y: -0.5965849, z: 0}
+  - {x: -0.44275504, y: -0.09117802, z: 0}
+  - {x: -0.56168115, y: 0.59497005, z: 0}
+  - {x: -0.015897758, y: 0.60486716, z: 0}
+  - {x: 0.38788563, y: 0.45104453, z: 0}
+  - {x: 0.5301711, y: 0.1972377, z: 0}
+  - {x: -0.0697375, y: 0.40489766, z: 0}
+  - {x: -0.37353545, y: 0.33183277, z: 0}
+  - {x: -0.31585267, y: -0.06810526, z: 0}
+  - {x: -0.36227852, y: -0.588894, z: 0}
+  m_ShapePathHash: -910097110
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 53886
