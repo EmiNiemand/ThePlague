@@ -1,5 +1,85 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1986571010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1986571011}
+  - component: {fileID: 1986571013}
+  - component: {fileID: 1986571012}
+  m_Layer: 5
+  m_Name: PickUpIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1986571011
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986571010}
+  m_LocalRotation: {x: -0, y: -0, z: 0.02768453, w: 0.99961674}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2989288246745673132}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.173}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6.8127726e-12, y: 1.48}
+  m_SizeDelta: {x: 189.3477, y: 71.3112}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1986571013
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986571010}
+  m_CullTransparentMesh: 1
+--- !u!114 &1986571012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986571010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 100
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Pick Up [E]
 --- !u!1 &2989288246587555312
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +264,7 @@ GameObject:
   - component: {fileID: 2989288246745673137}
   - component: {fileID: 2989288246745673138}
   - component: {fileID: 2989288246745673139}
+  - component: {fileID: 1578693055}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -204,6 +285,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2989288246587555319}
+  - {fileID: 1986571011}
   m_Father: {fileID: 2989288248492735028}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -273,6 +355,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1578693055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989288246745673133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765289664e41e234c88bdac8f2f06eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpIndicator: {fileID: 1986571010}
 --- !u!1 &2989288247351502881
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +413,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equippedWeapon: {fileID: 0}
-  weapons: []
+  weapons:
+  - {fileID: 3690965239533586678, guid: 20b645bc34efc844c8db752c39559aed, type: 3}
+  - {fileID: 2533782196553314095, guid: cfbb23eb61ddc9f489d31b08c32d77f9, type: 3}
+  - {fileID: 1680785177784905081, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
+  - {fileID: 8400326717329953454, guid: 997ef49db9d6fe541b80d3b6c655c8f5, type: 3}
   weaponIndicator: {fileID: 2989288246587555316}
 --- !u!1 &2989288248492735027
 GameObject:
@@ -372,6 +471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818ab6c5156dbda45a99af72b3cce79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 0
+  cooldownTime: 0
 --- !u!114 &2989288248492735030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,9 +500,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  lerpValue: 0
-  mouseXBorder: 0
-  mouseYBorder: 0
+  cameraOffset: {x: 0, y: 0, z: -15}
+  cameraFollowStrength: 0.25
+  cameraLerp: 0.25
+  mouseXBorder: 10
+  mouseYBorder: 10
 --- !u!114 &2989288248492735031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,9 +579,53 @@ MonoBehaviour:
     m_ActionId: 07354bde-33d8-4c6e-a1f7-f8f4912cff41
     m_ActionName: Gameplay/Use[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2989288248492735029}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: OnSwitchWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4a24383a-f0d3-433d-8653-cd961a58afe1
     m_ActionName: Gameplay/SwitchWeapon[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2989288248492735029}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: OnReset
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0022d952-4a1a-4cf4-abaa-c26dbae96c96
+    m_ActionName: Gameplay/Reset[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2989288248492735029}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: OnQuit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 35651c19-116c-4e2f-a569-26d47d72ba5b
+    m_ActionName: Gameplay/Quit[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard+Mouse
   m_DefaultActionMap: Gameplay

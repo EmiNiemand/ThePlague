@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public abstract class Enemy : MonoBehaviour
 {
     protected int HP;
+    [SerializeField] protected int Damage;
     [SerializeField] protected int maxHP;
     [SerializeField] protected int heal;
     [Space(10)]
@@ -16,8 +17,9 @@ public abstract class Enemy : MonoBehaviour
     private bool isOnCooldown;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
+        this.gameObject.tag = "Enemy";
         HP = maxHP;
         isOnCooldown = false;
         if (heal > 0)
@@ -32,7 +34,7 @@ public abstract class Enemy : MonoBehaviour
 
     private IEnumerator Heal()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         if (HP != maxHP)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,7 +43,7 @@ public abstract class Enemy : MonoBehaviour
                 //temp
                 spriteRenderer.color = Color.green;
 
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0.5f);
                 OnHeal();
 
                 //temp

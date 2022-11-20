@@ -13,7 +13,12 @@ public class PlayerCombat : MonoBehaviour
 	private GameUI gameUI;
     private PlayerUI playerUI;
 
-	// Start is called before the first frame update
+    private int HP;
+    [SerializeField] private int maxHP;
+    [SerializeField] private float cooldownTime;
+    private bool isOnCooldown;
+
+    // Start is called before the first frame update
 	void Start()
 	{
 		playerSprite = transform.GetChild(0).gameObject;
@@ -68,4 +73,48 @@ public class PlayerCombat : MonoBehaviour
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
+
+    public void OnQuit(InputAction.CallbackContext context)
+    {
+        Application.Quit(0);
+    }
+
+    public void OnHeal(int heal)
+    {
+        if (HP + heal > maxHP)
+        {
+            HP = maxHP;
+        }
+        else
+        {
+            HP += heal;
+        }
+    }
+
+    public void OnReceiveDamage(int Damage)
+    {
+        if (isOnCooldown) return;
+
+        StartCoroutine(DamageCooldown());
+
+        HP -= Damage;
+    }
+
+    private IEnumerator DamageCooldown()
+    {
+        //temp
+        SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        isOnCooldown = true;
+
+        //temp
+        spriteRenderer.color = Color.red;
+
+        yield return new WaitForSeconds(cooldownTime);
+
+        //temp
+        spriteRenderer.color = Color.white;
+
+        isOnCooldown = false;
+    }
 }
