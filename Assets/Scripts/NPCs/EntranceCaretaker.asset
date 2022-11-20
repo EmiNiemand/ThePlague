@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0aa49a75321a044280b52b6d19894f4, type: 3}
+  m_Name: EntranceCaretaker
+  m_EditorClassIdentifier: 
+  characterName: '[...]'
+  description: It feels like he wants to give you something.
+  goodies:
+  - {fileID: 3690965239533586678, guid: 20b645bc34efc844c8db752c39559aed, type: 3}
+  - {fileID: 2533782196553314095, guid: cfbb23eb61ddc9f489d31b08c32d77f9, type: 3}
