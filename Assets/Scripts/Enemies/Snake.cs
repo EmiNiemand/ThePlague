@@ -44,7 +44,7 @@ public class Snake : Enemy
         StartCoroutine(OnAttack());
     }
 
-    void OnCollisionStay2D(Collision2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         if (col != null && col.gameObject.CompareTag("Player"))
         {

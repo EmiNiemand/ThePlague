@@ -40,7 +40,7 @@ public class Rat : Enemy
         rb2D.AddForce((player.transform.position - transform.position).normalized * moveSpeed * 2, ForceMode2D.Impulse);
     }
 
-    void OnCollisionStay2D(Collision2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         if (col != null && col.gameObject.CompareTag("Player"))
         {

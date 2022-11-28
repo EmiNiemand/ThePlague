@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3874143013788603439}
   - component: {fileID: 3874143013788603436}
   - component: {fileID: 3874143013788603433}
+  - component: {fileID: 6117927081655832873}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Enemy
@@ -124,9 +125,25 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &3874143013788603433
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3874143013788603426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0028468769, y: 0}
+  m_Size: {x: 0.81879395, y: 1.28}
+  m_Direction: 0
+--- !u!70 &6117927081655832873
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,9 +156,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0028468769, y: 0}
-  m_Size: {x: 0.81879395, y: 1.28}
-  m_Direction: 0
+  m_Offset: {x: -0.005252136, y: -0.60670704}
+  m_Size: {x: 0.63915825, y: 0.06659859}
+  m_Direction: 1
 --- !u!1 &3874143013911712680
 GameObject:
   m_ObjectHideFlags: 0
