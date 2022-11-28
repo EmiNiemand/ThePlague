@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
 
     private float dist;
     private float distLerp;
@@ -23,6 +23,11 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float mouseXBorder;
     [SerializeField] private float mouseYBorder;
     // Update is called once per frame
+
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("MainCamera").transform;
+    }
 
     private void Update()
     {

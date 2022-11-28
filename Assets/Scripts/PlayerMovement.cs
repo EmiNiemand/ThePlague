@@ -12,10 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public bool isUsePressed = false;
 
     [SerializeField] private float MoveSpeed;
+
+    private PlayerCombat playerCombat;
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
+        playerCombat = GetComponent<PlayerCombat>();
     }
 
     // Update is called once per frame
@@ -26,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Rigidbody.AddForce(MoveAxis * MoveSpeed, ForceMode2D.Impulse);
+        Rigidbody.AddForce(MoveAxis * (MoveSpeed + playerCombat.GetAdditionalMoveSpeed()), ForceMode2D.Impulse);
     }
 
     public void OnMove(InputAction.CallbackContext context)

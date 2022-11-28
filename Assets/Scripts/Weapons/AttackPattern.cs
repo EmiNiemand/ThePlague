@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class AttackPattern : MonoBehaviour
 {
 	public Sprite weaponIcon;
-
+    protected PlayerCombat combat;
 	protected GamepadHaptics haptics;
 	public bool isOnCooldown;
 	protected GameObject weaponInstance;
@@ -27,6 +27,7 @@ public abstract class AttackPattern : MonoBehaviour
 
     protected void Setup()
     {
+		combat = gameObject.GetComponentInParent<PlayerCombat>();
 		haptics = GetComponentInParent<GamepadHaptics>();
 		isOnCooldown = false;
     }

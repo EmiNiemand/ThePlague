@@ -49,14 +49,14 @@ public class APBSFusion : AttackPattern
     protected override IEnumerator Cooldown()
     {
         yield return new WaitUntil(() => weaponInstance == null);
-        yield return new WaitForSeconds(cooldownDuration);
+        yield return new WaitForSeconds(cooldownDuration - combat.GetAdditionalAttackSpeed());
         isOnCooldown = false;
     }
 
 
     private bool isOnPosition(Vector3 destination)
     {
-        weaponInstance.transform.position = Vector3.MoveTowards(weaponInstance.transform.position, destination, speed * Time.deltaTime * 4);
+        weaponInstance.transform.position = Vector3.MoveTowards(weaponInstance.transform.position, destination, (speed + combat.GetAdditionalAttackSpeed()) * Time.deltaTime * 4);
         weaponInstance.transform.Rotate(0, 0, speed * Time.deltaTime * 400);
 
         return Vector3.Distance(weaponInstance.transform.position, destination) < 0.1f;

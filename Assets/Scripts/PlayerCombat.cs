@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,13 +15,16 @@ public class PlayerCombat : MonoBehaviour
 	private GameUI gameUI;
     private PlayerUI playerUI;
 
+    private float additionalMoveSpeed = 0;
+    private float additionalAttackSpeed = 0;
+
     private int HP;
     [SerializeField] private int maxHP;
     [SerializeField] private float cooldownTime;
     private bool isOnCooldown;
 
     // Start is called before the first frame update
-	void Start()
+    void Start()
 	{
 		playerSprite = transform.GetChild(0).gameObject;
 
@@ -30,13 +35,13 @@ public class PlayerCombat : MonoBehaviour
 		playerWeapon = GetComponentInChildren<Weapon>();
 		gameUI = GameObject.Find("_GameUI").GetComponent<GameUI>();
 		playerUI = GetComponentInChildren<PlayerUI>();
-	}
+    }
 
 
 	// Update is called once per frame
 	void Update()
-	{        
-		cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+    {
+        cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 		lerpCursorPos = Vector2.Lerp(lerpCursorPos, cursorPos, 0.04f);
 
 		//Rotate player towards cursor
@@ -91,13 +96,39 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    public void OnReceiveDamage(int Damage)
+    public void OnReceiveDamage(int damage)
     {
         if (isOnCooldown) return;
 
         StartCoroutine(DamageCooldown());
 
-        HP -= Damage;
+        HP -= damage;
+
+        if (HP < 0)
+        {
+            OnDeath();
+        }
+    }
+
+    private void OnDeath()
+    {
+        Destroy(gameObject);
+    }
+
+    public void OnUpgradeHealth(int value)
+    {
+        HP += value;
+        maxHP += value;
+    }
+
+    public void OnUpgradeMoveSpeed(float value)
+    {
+        additionalMoveSpeed += value;
+    }
+
+    public void OnUpgradeAttackSpeed(float value)
+    {
+        additionalAttackSpeed += value;
     }
 
     private IEnumerator DamageCooldown()
@@ -116,5 +147,15 @@ public class PlayerCombat : MonoBehaviour
         spriteRenderer.color = Color.white;
 
         isOnCooldown = false;
+    }
+
+    public float GetAdditionalMoveSpeed()
+    {
+        return additionalMoveSpeed;
+    }
+
+    public float GetAdditionalAttackSpeed()
+    {
+        return additionalAttackSpeed;
     }
 }

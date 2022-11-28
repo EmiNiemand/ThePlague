@@ -33,7 +33,7 @@ public class APSBFusion : AttackPattern
 		collider.enabled = true;
 		renderer.enabled = true;
 
-		yield return new WaitForSeconds(attackDuration);
+		yield return new WaitForSeconds(attackDuration - combat.GetAdditionalAttackSpeed());
 
 		collider.enabled = false;
 		renderer.enabled = false;
@@ -42,7 +42,7 @@ public class APSBFusion : AttackPattern
 	protected override IEnumerator Cooldown()
 	{
 		isOnCooldown = true;
-		yield return new WaitForSeconds(attackDuration + cooldownDuration);
+		yield return new WaitForSeconds(attackDuration + cooldownDuration - combat.GetAdditionalAttackSpeed());
 		isOnCooldown = false;
 	}
 }
