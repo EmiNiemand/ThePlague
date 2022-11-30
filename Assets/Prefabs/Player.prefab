@@ -471,8 +471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818ab6c5156dbda45a99af72b3cce79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
-  cooldownTime: 0
+  maxHP: 5
+  cooldownTime: 0.25
 --- !u!114 &2989288248492735030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b62aa8daec76a4ab5a46229cc8269d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   cameraOffset: {x: 0, y: 0, z: -15}
   cameraFollowStrength: 0.25
   cameraLerp: 0.25

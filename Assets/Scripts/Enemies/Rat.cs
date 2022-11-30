@@ -24,6 +24,11 @@ public class Rat : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            return;
+        }
         distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance < 20)
         {

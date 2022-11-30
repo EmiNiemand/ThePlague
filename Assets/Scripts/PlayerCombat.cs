@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour
 {
-	private Camera mainCam;
 	private Vector3 cursorPos, lerpCursorPos;
 	private GameObject playerSprite;
 	private Weapon playerWeapon;
@@ -25,11 +24,10 @@ public class PlayerCombat : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-	{
+    {
+        HP = maxHP;
 		playerSprite = transform.GetChild(0).gameObject;
-
-		mainCam = Camera.main;
-		cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+		cursorPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 		lerpCursorPos = cursorPos;
 
 		playerWeapon = GetComponentInChildren<Weapon>();
@@ -41,7 +39,7 @@ public class PlayerCombat : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        cursorPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        cursorPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 		lerpCursorPos = Vector2.Lerp(lerpCursorPos, cursorPos, 0.04f);
 
 		//Rotate player towards cursor
@@ -103,16 +101,6 @@ public class PlayerCombat : MonoBehaviour
         StartCoroutine(DamageCooldown());
 
         HP -= damage;
-
-        if (HP < 0)
-        {
-            OnDeath();
-        }
-    }
-
-    private void OnDeath()
-    {
-        Destroy(gameObject);
     }
 
     public void OnUpgradeHealth(int value)
@@ -157,5 +145,10 @@ public class PlayerCombat : MonoBehaviour
     public float GetAdditionalAttackSpeed()
     {
         return additionalAttackSpeed;
+    }
+
+    public int GetHP()
+    {
+        return HP;
     }
 }

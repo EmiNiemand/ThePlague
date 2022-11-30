@@ -9,7 +9,10 @@ public class ChangeScene : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
-            SceneManager.LoadScene(sceneToLoad);
+        if (other.CompareTag("Player"))
+        {
+            GameObject.FindObjectOfType<GameManager>().LoadScene(sceneToLoad);
+            Destroy(gameObject);
+        }
     }
 }

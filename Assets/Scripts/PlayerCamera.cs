@@ -26,7 +26,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        target = Camera.main.transform;
     }
 
     private void Update()
