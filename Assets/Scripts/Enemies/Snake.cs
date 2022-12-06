@@ -19,7 +19,7 @@ public class Snake : Enemy
     // Start is called before the first frame update
     protected override void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         rb2D = GetComponent<Rigidbody2D>();
         base.Start();
     }
@@ -27,11 +27,17 @@ public class Snake : Enemy
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            return;
+        }
+        distance = Vector2.Distance(rb2D.transform.position, player.transform.position);
         if (distance < 15)
         {
             isAwake = true;
         }
+        
     }
     void FixedUpdate()
     {

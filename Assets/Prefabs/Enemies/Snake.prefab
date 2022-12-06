@@ -49,11 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347b41b29bd52054c9b839e9aa5b806d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
-  maxHP: 5
+  Damage: 2
+  maxHP: 4
   heal: 0
-  cooldownTime: 1
-  moveSpeed: 0.5
+  cooldownTime: 0.5
+  moveSpeed: 0.25
 --- !u!212 &3874143013788603439
 SpriteRenderer:
   m_ObjectHideFlags: 0

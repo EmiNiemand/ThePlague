@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Vector3 = UnityEngine.Vector3;
 
 public class GenerateDungeon : MonoBehaviour
@@ -43,6 +41,9 @@ public class GenerateDungeon : MonoBehaviour
     {
         _spawn = spawnPrefabs[UnityEngine.Random.Range(minSpawnIndex, maxSpawnIndex)];
         _corridor = corridorPrefabs[UnityEngine.Random.Range(minCorridorIndex, maxCorridorIndex)];
+        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = _spawn.transform.Find("PlayerSpawn").position;
         
         Vector3 corridorPos = _corridor.transform.position;
         Vector3 corridorExit = _corridor.transform.Find("Exit").position;
