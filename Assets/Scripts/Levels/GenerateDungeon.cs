@@ -6,8 +6,14 @@ using Vector3 = UnityEngine.Vector3;
 
 public class GenerateDungeon : MonoBehaviour
 {
-    [Range(2, 10)]
-    [SerializeField] private int levelDepth = 6;
+    private GameObject _spawn;
+    private GameObject _corridor;
+    private GameObject _room;
+    private GameObject _bossRoom;
+    private Vector3 _vect;
+
+    [Range(2, 8)]
+    [SerializeField] private int levelDepth = 4;
     
     [SerializeField] private List<GameObject> spawnPrefabs;
     [Range(0, 4)]
@@ -22,40 +28,53 @@ public class GenerateDungeon : MonoBehaviour
     [SerializeField] private int maxCorridorIndex = 4;
     
     [SerializeField] private List<GameObject> roomPrefabs;
-    [Range(0, 4)]
+    [Range(0, 7)]
     [SerializeField] private int minRoomIndex = 0;
-    [Range(0, 4)]
-    [SerializeField] private int maxRoomIndex = 4;
+    [Range(0, 7)]
+    [SerializeField] private int maxRoomIndex = 6;
+    
+    [SerializeField] private List<GameObject> bossRoomPrefabs;
+    [Range(0, 3)]
+    [SerializeField] private int minBossRoomIndex = 0;
+    [Range(0, 3)]
+    [SerializeField] private int maxBossRoomIndex = 3;
     
     private void OnEnable()
     {
-        this.Generate();
-    }
-
-    private void Generate()
-    {
-        GameObject spawn = GetRandomPrefab(minSpawnIndex, maxSpawnIndex, spawnPrefabs);
-        GameObject corridor = GetRandomPrefab(minCorridorIndex, maxCorridorIndex, corridorPrefabs);
-        GameObject room = GetRandomPrefab(minRoomIndex, maxRoomIndex, roomPrefabs);
-
-        Instantiate(spawn, spawn.transform.position, Quaternion.identity);
+        _spawn = spawnPrefabs[UnityEngine.Random.Range(minSpawnIndex, maxSpawnIndex)];
+        _corridor = corridorPrefabs[UnityEngine.Random.Range(minCorridorIndex, maxCorridorIndex)];
         
+        Vector3 corridorPos = _corridor.transform.position;
+        Vector3 corridorExit = _corridor.transform.Find("Exit").position;
+        Vector3 corridorEntry = _corridor.transform.Find("Entry").position;
         
-        corridor.transform.Find("Entry").position = spawn.transform.Find("Exit").position;
-        corridor.transform.position = corridor.transform.Find("Entry").localPosition;
-        Instantiate(corridor, corridor.transform.position, Quaternion.identity);
-           /* 
-        vect = room.transform.Find("Entry").position - corridor.transform.Find("Exit").position;
-        room.transform.position += vect;
-        room.transform.Find("Exit").position += vect;
-        room.transform.Find("Entry").position = corridor.transform.Find("Exit").position;
-        Instantiate(room, room.transform.position, Quaternion.identity);
-        */
+        Instantiate(_spawn, _spawn.transform.position, Quaternion.identity);
+        _vect = corridorEntry - _spawn.transform.Find("Exit").position;
+        corridorPos -= _vect;
+        Instantiate(_corridor, corridorPos, Quaternion.identity);
+        corridorEntry -= _vect;
+        corridorExit -= _vect;
+
+        for (int i = 0; i < levelDepth; i++)
+        {
+            _room = roomPrefabs[UnityEngine.Random.Range(minRoomIndex, maxRoomIndex)];
+
+            _vect = _room.transform.Find("Entry").position - corridorExit;
+            _room.transform.position -= _vect;
+            Instantiate(_room, _room.transform.position, Quaternion.identity);
+
+            _vect = _room.transform.Find("Exit").position - corridorEntry;
+            corridorPos += _vect;
+            Instantiate(_corridor, corridorPos, Quaternion.identity);
+            corridorEntry += _vect;
+            corridorExit += _vect;
+        }
+        
+        _bossRoom = bossRoomPrefabs[UnityEngine.Random.Range(minBossRoomIndex, maxBossRoomIndex)];
+            
+        _vect = _bossRoom.transform.Find("Entry").position - corridorExit;
+        _bossRoom.transform.position -= _vect;
+        Instantiate(_bossRoom, _bossRoom.transform.position, Quaternion.identity);
     }
 
-    private GameObject GetRandomPrefab(int min, int max, List<GameObject> prefabs)
-    {
-        return prefabs[UnityEngine.Random.Range(min, max)];
-    }
-    
 }
