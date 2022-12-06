@@ -1,46 +1,61 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Vector3 = UnityEngine.Vector3;
 
 public class GenerateDungeon : MonoBehaviour
 {
-    private NewSpawn _spawn;
-    private NewCorridor _corridor;
-    private NewRoom _room;
-    
     [Range(2, 10)]
     [SerializeField] private int levelDepth = 6;
-    [Range(1, 5)]
-    [SerializeField] private int minSpawnIndex = 1;
-    [Range(1, 5)]
-    [SerializeField] private int maxSpawnIndex = 5;
-    [Range(1, 5)]
-    [SerializeField] private int minCorridorIndex = 1;
-    [Range(1, 5)]
-    [SerializeField] private int maxCorridorIndex = 5;
-    [Range(1, 5)]
-    [SerializeField] private int minRoomIndex = 1;
-    [Range(1, 5)]
-    [SerializeField] private int maxRoomIndex = 5;
     
-
+    [SerializeField] private List<GameObject> spawnPrefabs;
+    [Range(0, 4)]
+    [SerializeField] private int minSpawnIndex = 0;
+    [Range(0, 4)]
+    [SerializeField] private int maxSpawnIndex = 4;
+    
+    [SerializeField] private List<GameObject> corridorPrefabs;
+    [Range(0, 4)]
+    [SerializeField] private int minCorridorIndex = 0;
+    [Range(0, 4)]
+    [SerializeField] private int maxCorridorIndex = 4;
+    
+    [SerializeField] private List<GameObject> roomPrefabs;
+    [Range(0, 4)]
+    [SerializeField] private int minRoomIndex = 0;
+    [Range(0, 4)]
+    [SerializeField] private int maxRoomIndex = 4;
+    
     private void OnEnable()
     {
-        _spawn = gameObject.AddComponent<NewSpawn>();
-        _corridor = gameObject.AddComponent<NewCorridor>();
-        // _room = new NewRoom();
-        
         this.Generate();
     }
 
     private void Generate()
     {
-        GameObject spawn = _spawn.GetNewSpawn(minSpawnIndex, maxSpawnIndex);
-        GameObject corridor = _corridor.GetNewCorridor(minCorridorIndex, maxCorridorIndex);
+        GameObject spawn = GetRandomPrefab(minSpawnIndex, maxSpawnIndex, spawnPrefabs);
+        GameObject corridor = GetRandomPrefab(minCorridorIndex, maxCorridorIndex, corridorPrefabs);
+        GameObject room = GetRandomPrefab(minRoomIndex, maxRoomIndex, roomPrefabs);
 
-        Instantiate(spawn, new Vector3(0, 0, -1), Quaternion.identity);
-        Instantiate(corridor, new Vector3(0, 0, -1), Quaternion.identity);
+        Instantiate(spawn, spawn.transform.position, Quaternion.identity);
+        
+        
+        corridor.transform.Find("Entry").position = spawn.transform.Find("Exit").position;
+        corridor.transform.position = corridor.transform.Find("Entry").localPosition;
+        Instantiate(corridor, corridor.transform.position, Quaternion.identity);
+           /* 
+        vect = room.transform.Find("Entry").position - corridor.transform.Find("Exit").position;
+        room.transform.position += vect;
+        room.transform.Find("Exit").position += vect;
+        room.transform.Find("Entry").position = corridor.transform.Find("Exit").position;
+        Instantiate(room, room.transform.position, Quaternion.identity);
+        */
     }
 
+    private GameObject GetRandomPrefab(int min, int max, List<GameObject> prefabs)
+    {
+        return prefabs[UnityEngine.Random.Range(min, max)];
+    }
+    
 }
