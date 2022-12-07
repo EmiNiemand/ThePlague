@@ -37,31 +37,25 @@ public class PlayerCamera : MonoBehaviour
     private void LateUpdate()
     {
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        // mousePos.z = Camera.main.nearClipPlane; 
 
-        if (mousePos.x < mouseXBorder && mousePos.x > -mouseXBorder)
+        mousePos.x -= this.transform.position.x;
+        mousePos.y -= this.transform.position.y;
+
+        if (mousePos.x < mouseXBorder
+            && mousePos.x > -mouseXBorder)
             mouseVector.x = mousePos.x;
         else if (mousePos.x >= mouseXBorder)
             mouseVector.x = mouseXBorder;
         else if (mousePos.x <= -mouseXBorder)
             mouseVector.x = -mouseXBorder;
 
-        if (mousePos.y < mouseYBorder && mousePos.y > -mouseYBorder)
+        if (mousePos.y < mouseYBorder
+            && mousePos.y > -mouseYBorder)
             mouseVector.y = mousePos.y;
         else if (mousePos.y >= mouseYBorder)
             mouseVector.y = mouseYBorder;
         else if (mousePos.y <= -mouseYBorder)
             mouseVector.y = -mouseYBorder;
-
-        /*dist = Vector3.Distance(mousePos, target.position);
-
-        if (dist >= 1.0f)
-            distLerp = (1.0f / dist) * mouseLerp;
-        else if (dist > 0.0f)
-            distLerp = mouseLerp;
-
-        newPos = Vector3.Lerp(this.transform.position, target.transform.position + mouseVector, cameraLerp - distLerp);
-        target.transform.position = newPos + cameraOffset;*/
 
         newPos = Vector3.Lerp(this.transform.position, target.transform.position + mouseVector, cameraFollowStrength);
         target.transform.position = Vector3.Lerp(target.transform.position, newPos + cameraOffset, cameraLerp);
