@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
             player = GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             DontDestroyOnLoad(player);
             DontDestroyOnLoad(GameObject.FindObjectOfType<GameUI>());
-            DontDestroyOnLoad(Camera.main);
+            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("MainCamera"));
         }
     }
 
@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
         {
             player = GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             DontDestroyOnLoad(player);
+            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("MainCamera"));
+            DontDestroyOnLoad(GameObject.FindObjectOfType<GameUI>());
         }
         player.transform.position = Vector3.zero;
     }
@@ -52,8 +54,8 @@ public class GameManager : MonoBehaviour
         if (player.GetComponent<PlayerCombat>().GetHP() <= 0)
         {
             Destroy(player);
-            Destroy(Camera.main);
-            Destroy(GameObject.FindObjectOfType<GameUI>());
+            Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+            Destroy(GameObject.Find("_GameUI"));
             SceneManager.LoadScene("Hub");
         }
     }
