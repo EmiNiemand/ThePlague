@@ -1,25 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class antiEnemies : buttons
 {
-    private GameObject enemy;
-    private GameObject player;
 
     protected override void Start()
     {
-        enemy = GameObject.Find("Enemy");
-        player = GameObject.FindGameObjectWithTag("Player");
     }
+
     private void OnTriggerEnter2D(Collider2D col)
 
     {
-        if (col != null && col.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") && col != null)
         {
-            enemy.GetComponent<Enemy>().OnReceiveDamage(Damage);
+            col.GetComponent<Enemy>().OnReceiveDamage(Damage);
             this.OnDie();
         }
     }
-    
     public override void OnDie()
     {
         Destroy(this.gameObject);

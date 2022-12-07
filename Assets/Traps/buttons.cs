@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class buttons : MonoBehaviour
@@ -11,5 +13,6 @@ public abstract class buttons : MonoBehaviour
     }
 
     public abstract void OnDie();
+
 
 }

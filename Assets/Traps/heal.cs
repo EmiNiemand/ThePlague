@@ -1,19 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class heal : buttons
 {
-    private GameObject player;
-
     protected override void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
+
     private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col != null && col.CompareTag("Player"))
+
+            {
+        if (col.gameObject.CompareTag("Player") && col != null)
         {
-            player.GetComponent<PlayerCombat>().OnHeal(Damage);
+            col.GetComponent<PlayerCombat>().OnHeal(Damage);
             this.OnDie();
         }
     }
