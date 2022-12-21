@@ -22,6 +22,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float cooldownTime;
     private bool isOnCooldown;
 
+    private bool canAttack = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +65,7 @@ public class PlayerCombat : MonoBehaviour
 
 	public void OnAttack(InputAction.CallbackContext context)
 	{
-		playerWeapon.Attack();
+		if (canAttack) playerWeapon.Attack();
 	}
 
 	public void OnSwitchWeapon(InputAction.CallbackContext context)
@@ -150,5 +152,10 @@ public class PlayerCombat : MonoBehaviour
     public int GetHP()
     {
         return HP;
+    }
+
+    public void SetCanAttack(bool bCanAttack)
+    {
+	    canAttack = bCanAttack;
     }
 }

@@ -39,6 +39,7 @@ public class CaretakerNPC : NPCBase
         }
         gameObject.transform.Translate(2, 0, 0);
         npcUI.SetDescription("");
+        base.OnInteractEnd();
 	}
 
     private Dictionary<string, Sprite> GetItemsDict()

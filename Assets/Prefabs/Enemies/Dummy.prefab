@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 8776289653987200350}
   - component: {fileID: 8776289653987200351}
   - component: {fileID: 8776289653987200352}
+  - component: {fileID: 3793501949376327882}
   - component: {fileID: 6796895983861023628}
   m_Layer: 0
   m_Name: Dummy
@@ -543,6 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d795d457ad7a194ebd28928f00569cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
   maxHP: 10
   heal: 0
   cooldownTime: 1
@@ -586,7 +588,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 2b0738c1422d3d54fb0c32731edfd0a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -629,7 +631,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -664,6 +666,22 @@ PolygonCollider2D:
       - {x: 0.18936372, y: -0.36344457}
       - {x: 0.050679654, y: -0.26662493}
       - {x: 0.15836537, y: 0.16964768}
+--- !u!70 &3793501949376327882
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776289653987200356}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03062333, y: -0.45934594}
+  m_Size: {x: 0.4684926, y: 0.36130968}
+  m_Direction: 1
 --- !u!114 &6796895983861023628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,4 +716,4 @@ MonoBehaviour:
   - {x: -0.16565324, y: -0.63065624, z: 0}
   m_ShapePathHash: 330390278
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47542
+  m_InstanceId: 143924

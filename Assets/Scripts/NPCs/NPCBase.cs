@@ -18,5 +18,14 @@ public abstract class NPCBase : MonoBehaviour
 	}
 	public virtual void OnBoundaryEntry() { npcUI.SetDescriptionActive(true); }
 	public virtual void OnBoundaryExit() { npcUI.SetDescriptionActive(false); }
-	public virtual void OnInteract() { }
+
+	public virtual void OnInteract()
+	{
+		GameObject.FindWithTag("Player").GetComponent<PlayerCombat>().SetCanAttack(false);
+	}
+	
+	public virtual void OnInteractEnd()
+	{
+		GameObject.FindWithTag("Player").GetComponent<PlayerCombat>().SetCanAttack(true);
+	}
 }

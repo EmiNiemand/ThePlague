@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 8776289653987200351}
   - component: {fileID: 8776289653987200352}
   - component: {fileID: 6461856407432386291}
+  - component: {fileID: 236128929108928456}
   m_Layer: 0
   m_Name: DummyTheBoi
   m_TagString: Enemy
@@ -543,6 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d795d457ad7a194ebd28928f00569cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
   maxHP: 15
   heal: 10
   cooldownTime: 1
@@ -586,7 +588,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: c8476378b8a613d46b5ea6ce19a199b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -629,7 +631,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -690,4 +692,20 @@ MonoBehaviour:
   - {x: 0.05413139, y: -0.6245824, z: 0}
   m_ShapePathHash: 1101818306
   m_Mesh: {fileID: 0}
-  m_InstanceId: -29588
+  m_InstanceId: 142090
+--- !u!70 &236128929108928456
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776289653987200356}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.02174273, y: -0.45969504}
+  m_Size: {x: 0.45379692, y: 0.36061266}
+  m_Direction: 1

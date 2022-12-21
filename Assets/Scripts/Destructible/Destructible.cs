@@ -10,7 +10,9 @@ public class Destructible : MonoBehaviour
 
     public void OnDestroy()
     {
-        GetComponent<SpriteRenderer>().sprite = spriteAfterDestruction;
+        var renderer = GetComponent<SpriteRenderer>();
+        renderer.sprite = spriteAfterDestruction;
+        renderer.sortingOrder = 4;
         var colliders = GetComponents<Collider2D>();
         foreach (var collider in colliders)
         {
