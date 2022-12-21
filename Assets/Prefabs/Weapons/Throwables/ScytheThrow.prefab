@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7904893451718597794}
   - component: {fileID: 8911308869412967760}
   - component: {fileID: -2749472937741115830}
+  - component: {fileID: 5097782020504813792}
   m_Layer: 0
   m_Name: ScytheThrow
   m_TagString: Untagged
@@ -183,4 +184,25 @@ MonoBehaviour:
   - {x: -0.36227852, y: -0.588894, z: 0}
   m_ShapePathHash: -910097110
   m_Mesh: {fileID: 0}
-  m_InstanceId: 53886
+  m_InstanceId: 90288
+--- !u!50 &5097782020504813792
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407843021204052685}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

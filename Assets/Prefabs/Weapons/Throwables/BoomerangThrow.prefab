@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4519166302648931741}
   - component: {fileID: -1542022876367923128}
   - component: {fileID: 8197563148549844329}
+  - component: {fileID: 7527242481791967870}
   m_Layer: 0
   m_Name: BoomerangThrow
   m_TagString: Untagged
@@ -174,4 +175,25 @@ MonoBehaviour:
   - {x: 0.2773018, y: -0.48180187, z: 0}
   m_ShapePathHash: 1247630789
   m_Mesh: {fileID: 0}
-  m_InstanceId: -190048
+  m_InstanceId: 99776
+--- !u!50 &7527242481791967870
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177829668862348775}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

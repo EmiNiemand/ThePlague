@@ -22,5 +22,9 @@ public class WeaponHitDetect : MonoBehaviour
         {
             pattern.WallHit();
         }
+        else if(other.CompareTag("Destructible"))
+        {
+            other.gameObject.GetComponent<Destructible>().OnDestroy();
+        }
     }
 }
