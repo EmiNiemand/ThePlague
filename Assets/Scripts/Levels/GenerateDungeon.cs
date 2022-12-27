@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using Vector3 = UnityEngine.Vector3;
 
 public class GenerateDungeon : MonoBehaviour
@@ -9,6 +12,9 @@ public class GenerateDungeon : MonoBehaviour
     private GameObject _room;
     private GameObject _bossRoom;
     private Vector3 _transVector;
+    
+    // CheckBox for random level depth
+    [SerializeField]  private bool randomLevelDepth = true;
 
     // Maximum level depth with boss room
     // (eg. for levelDepth = 2 there is 1 room and 1 boss room)
@@ -31,20 +37,25 @@ public class GenerateDungeon : MonoBehaviour
     
     // Settings for randomizing room prefabs
     [SerializeField] private List<GameObject> roomPrefabs;
-    [Range(0, 7)]
+    [Range(0, 6)]
     [SerializeField] private int minRoomIndex = 0;
-    [Range(0, 7)]
+    [Range(0, 6)]
     [SerializeField] private int maxRoomIndex = 6;
     
     // Settings for randomizing boss room prefabs
     [SerializeField] private List<GameObject> bossRoomPrefabs;
-    [Range(0, 3)]
+    [Range(0, 2)]
     [SerializeField] private int minBossRoomIndex = 0;
-    [Range(0, 3)]
-    [SerializeField] private int maxBossRoomIndex = 3;
-    
+    [Range(0, 2)]
+    [SerializeField] private int maxBossRoomIndex = 2;
+
     private void OnEnable()
     {
+        if (randomLevelDepth)
+        {
+            levelDepth = UnityEngine.Random.Range(2, 6);
+        }
+        
         // Randomize Spawn and Corridor prefab
         _spawn = spawnPrefabs[UnityEngine.Random.Range(minSpawnIndex, maxSpawnIndex)];
         _corridor = corridorPrefabs[UnityEngine.Random.Range(minCorridorIndex, maxCorridorIndex)];

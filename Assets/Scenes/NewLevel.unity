@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b305c6dabf878db49824d1e55c02ceab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomLevelDepth: 1
   levelDepth: 2
   spawnPrefabs:
   - {fileID: 6558384531721188350, guid: 03cf9f8677d936c43b995160139436c3, type: 3}
@@ -324,13 +325,13 @@ MonoBehaviour:
   - {fileID: 6558384531721188350, guid: 149b1065d3a09fc43992f598f1e79947, type: 3}
   - {fileID: 6558384531721188350, guid: 85975bdced7b4144f88ada5aca27f484, type: 3}
   minRoomIndex: 0
-  maxRoomIndex: 7
+  maxRoomIndex: 6
   bossRoomPrefabs:
   - {fileID: 6558384531721188350, guid: ffd603e95442b9b4095e05f2f19c1f38, type: 3}
   - {fileID: 6558384531721188350, guid: 2c624e674a5a3fb4e9d53050f045c29a, type: 3}
   - {fileID: 6558384531721188350, guid: 7b216f868cca17f4bb56c79ae3bebd9f, type: 3}
   minBossRoomIndex: 0
-  maxBossRoomIndex: 3
+  maxBossRoomIndex: 2
 --- !u!1 &337397208
 GameObject:
   m_ObjectHideFlags: 0
