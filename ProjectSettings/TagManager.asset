@@ -8,6 +8,7 @@ TagManager:
   - Environment
   - Obstacles
   - Destructible
+  - Trap
   layers:
   - Default
   - TransparentFX
