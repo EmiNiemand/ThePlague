@@ -46,6 +46,7 @@ public class PlayerCombat : MonoBehaviour
 
 		//Rotate player towards cursor
 		playerSprite.transform.up = lerpCursorPos - playerSprite.transform.position;
+		GetComponent<Collider2D>().transform.up = lerpCursorPos - playerSprite.transform.position;
 	}
 
     public void PickUpIndicator(bool activate)

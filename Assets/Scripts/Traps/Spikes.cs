@@ -5,9 +5,18 @@ using UnityEngine;
 
 public class Spikes : Traps
 {
-    protected override IEnumerator OnEnter()
+    protected override IEnumerator OnEnter(Collider2D col)
     {
-        yield return StartCoroutine(OnCooldown());
+        if(col.gameObject.CompareTag("Player") && !isOnCooldown)
+        {
+            col.gameObject.GetComponent<PlayerCombat>().OnReceiveDamage(damage);
+        }
+        
+        else if(col.gameObject.CompareTag("Enemy") && !isOnCooldown)
+        {
+            col.gameObject.GetComponent<Enemy>().OnReceiveDamage(damage);
+        }
+        if(!isOnCooldown) yield return StartCoroutine(OnCooldown());
     }
 
     private IEnumerator OnCooldown()

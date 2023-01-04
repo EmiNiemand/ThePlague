@@ -20,20 +20,13 @@ public abstract class Traps : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if(col.gameObject.CompareTag("Player") && isOnCooldown == false)
+        if (col != null)
         {
-            StartCoroutine(OnEnter());
-            col.gameObject.GetComponent<PlayerCombat>().OnReceiveDamage(damage);
-        }
-        
-        else if(col.gameObject.CompareTag("Enemy") && isOnCooldown == false)
-        {
-            StartCoroutine(OnEnter());
-            col.gameObject.GetComponent<Enemy>().OnReceiveDamage(damage);
+            StartCoroutine(OnEnter(col));
         }
     }
 
-    protected virtual IEnumerator OnEnter()
+    protected virtual IEnumerator OnEnter(Collider2D col)
     {
         yield break;
     }

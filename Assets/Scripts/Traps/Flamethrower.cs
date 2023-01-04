@@ -80,4 +80,19 @@ public class Flamethrower : Traps
             yield return null;
         }
     }
+    
+    protected override IEnumerator OnEnter(Collider2D col)
+    {
+        if(col.gameObject.CompareTag("Player"))
+        {
+            col.gameObject.GetComponent<PlayerCombat>().OnReceiveDamage(damage);
+        }
+        
+        else if(col.gameObject.CompareTag("Enemy"))
+        {
+            col.gameObject.GetComponent<Enemy>().OnReceiveDamage(damage);
+        }
+
+        yield break;
+    }
 }
