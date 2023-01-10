@@ -6456,7 +6456,7 @@ GameObject:
   - component: {fileID: 5143066767199840028}
   m_Layer: 0
   m_Name: PlayerSpawn
-  m_TagString: Untagged
+  m_TagString: PlayerSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6469,7 +6469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3213484993108567140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10228,7 +10228,7 @@ MonoBehaviour:
   - {x: -0.049544573, y: -0.5560756, z: 0}
   m_ShapePathHash: 1192379139
   m_Mesh: {fileID: 0}
-  m_InstanceId: 86090
+  m_InstanceId: 62098
 --- !u!1 &7416057578185404321
 GameObject:
   m_ObjectHideFlags: 0

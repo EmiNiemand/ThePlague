@@ -9,6 +9,7 @@ TagManager:
   - Obstacles
   - Destructible
   - Trap
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
