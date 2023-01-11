@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 6790316922768943467}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
   - {x: -0.049544573, y: -0.5560756, z: 0}
   m_ShapePathHash: 1192379139
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1306
+  m_InstanceId: 83744
 --- !u!1 &6790316923045025892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: 6790316923420359795}
   m_Layer: 0
   m_Name: Caretaker
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - Obstacles
   - Destructible
   - Trap
+  - NPC
   layers:
   - Default
   - TransparentFX
