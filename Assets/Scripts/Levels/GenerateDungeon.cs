@@ -59,11 +59,7 @@ public class GenerateDungeon : MonoBehaviour
         // Randomize Spawn and Corridor prefab
         _spawn = spawnPrefabs[UnityEngine.Random.Range(minSpawnIndex, maxSpawnIndex)];
         _corridor = corridorPrefabs[UnityEngine.Random.Range(minCorridorIndex, maxCorridorIndex)];
-        
-        // Move player to the PlayerSpawn element position
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = _spawn.transform.Find("PlayerSpawn").position;
-        
+
         // Storing corridor elements positions to decrease 
         // total amount of calls to the object
         Vector3 corridorPos = _corridor.transform.position;
@@ -121,6 +117,9 @@ public class GenerateDungeon : MonoBehaviour
         _transVector = _bossRoom.transform.Find("Entry").position - corridorExit;
         _bossRoom.transform.position -= _transVector;
         Instantiate(_bossRoom, _bossRoom.transform.position, Quaternion.identity);
+        
+        // Move player to the PlayerSpawn element position
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.SetPositionAndRotation(_spawn.transform.Find("PlayerSpawn").position, Quaternion.identity);
     }
-
 }

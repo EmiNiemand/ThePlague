@@ -10,6 +10,8 @@ TagManager:
   - Destructible
   - Trap
   - NPC
+  - PlayerSpawn
+  - Doors
   layers:
   - Default
   - TransparentFX
