@@ -50,4 +50,4 @@ MonoBehaviour:
   damage: 5
   cooldownDuration: 0.6
   weaponIndicator: {fileID: 0}
-  speed: 6
+  speed: 5

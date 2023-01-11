@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3874143013788603439}
   - component: {fileID: 3874143013788603436}
   - component: {fileID: 6117927081655832873}
+  - component: {fileID: 8692751057265121487}
   m_Layer: 0
   m_Name: Snail
   m_TagString: Enemy
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3874143013788603426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -139,9 +140,25 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.051378265, y: -0.086845204}
-  m_Size: {x: 1.4777001, y: 0.94526803}
+  m_Offset: {x: -0.037846584, y: -0.111204}
+  m_Size: {x: 1.4181595, y: 0.799118}
   m_Direction: 1
+--- !u!70 &8692751057265121487
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3874143013788603426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.027064323, y: -0.49407265}
+  m_Size: {x: 0.18260533, y: 0.18260536}
+  m_Direction: 0
 --- !u!1 &3874143013911712680
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +580,7 @@ RectTransform:
   m_GameObject: {fileID: 3874143015541220160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.06423968}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 1}
+  m_LocalScale: {x: 0.6666667, y: 0.6750001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3874143013977865264}
@@ -572,8 +589,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.04, y: 0.91}
-  m_SizeDelta: {x: 3, y: 6.25}
+  m_AnchoredPosition: {x: 0.0501, y: -0.3221}
+  m_SizeDelta: {x: 3.3333, y: 2.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3874143015541220172
 Canvas:
@@ -594,7 +611,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &3874143015541220173
 MonoBehaviour:

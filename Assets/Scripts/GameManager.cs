@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,7 @@ using Object = UnityEngine.Object;
 public class GameManager : MonoBehaviour
 {
     private GameObject player;
-
+    [SerializeField] private List<String> tags;
     [SerializeField] private GameObject playerPrefab;
     // Start is called before the first frame update
     void Start()
@@ -58,5 +59,38 @@ public class GameManager : MonoBehaviour
             Destroy(GameObject.Find("_GameUI"));
             SceneManager.LoadScene("Hub");
         }
+        List<GameObject> lista = new List<GameObject>();
+        foreach (var tag in tags)
+        {
+            lista.AddRange(GameObject.FindGameObjectsWithTag(tag));
+        }
+
+        lista = lista.OrderBy(x => GetDistance(x)).ToList();
+        int layer = 1;
+        foreach (var obj in lista)
+        {
+            Debug.Log(obj.transform.position.y.ToString());
+            SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+            if (renderer == null)
+            {
+                renderer = obj.GetComponentInChildren<SpriteRenderer>();
+            }
+
+            renderer.sortingOrder = 1000 - layer;
+            layer++;
+
+        }
     }
+    
+    private float GetDistance(GameObject obj)
+    {
+        SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+        if (renderer == null)
+        {
+            renderer = obj.GetComponentInChildren<SpriteRenderer>();
+        }
+        
+        return obj.transform.position.y - renderer.bounds.size.y/2;
+    }
+    
 }
