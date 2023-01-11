@@ -10,6 +10,7 @@ TagManager:
   - Destructible
   - Trap
   - PlayerSpawn
+  - Doors
   layers:
   - Default
   - TransparentFX

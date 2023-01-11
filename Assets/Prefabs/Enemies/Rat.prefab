@@ -321,7 +321,7 @@ MonoBehaviour:
   maxHP: 5
   heal: 0
   cooldownTime: 1
-  moveSpeed: 0.5
+  moveSpeed: 0.4
 --- !u!212 &5650045634521690197
 SpriteRenderer:
   m_ObjectHideFlags: 0
