@@ -324,8 +324,9 @@ MonoBehaviour:
   - {fileID: 6558384531721188350, guid: 8f1d751682f3d5949a8eb2666f842455, type: 3}
   - {fileID: 6558384531721188350, guid: 149b1065d3a09fc43992f598f1e79947, type: 3}
   - {fileID: 6558384531721188350, guid: 85975bdced7b4144f88ada5aca27f484, type: 3}
+  - {fileID: 6558384531721188350, guid: 3ce20362ea6a7874faa4b4acb6b66508, type: 3}
   minRoomIndex: 0
-  maxRoomIndex: 0
+  maxRoomIndex: 6
   bossRoomPrefabs:
   - {fileID: 6558384531721188350, guid: ffd603e95442b9b4095e05f2f19c1f38, type: 3}
   - {fileID: 6558384531721188350, guid: 2c624e674a5a3fb4e9d53050f045c29a, type: 3}

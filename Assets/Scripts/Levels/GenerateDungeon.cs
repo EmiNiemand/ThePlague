@@ -14,7 +14,7 @@ public class GenerateDungeon : MonoBehaviour
     private Vector3 _transVector;
     
     // CheckBox for random level depth
-    [SerializeField]  private bool randomLevelDepth = true;
+    [SerializeField] private bool randomLevelDepth;
 
     // Maximum level depth with boss room
     // (eg. for levelDepth = 2 there is 1 room and 1 boss room)
@@ -53,7 +53,7 @@ public class GenerateDungeon : MonoBehaviour
     {
         if (randomLevelDepth)
         {
-            levelDepth = UnityEngine.Random.Range(2, 6);
+            levelDepth = UnityEngine.Random.Range(4, 6);
         }
         
         // Randomize Spawn and Corridor prefab

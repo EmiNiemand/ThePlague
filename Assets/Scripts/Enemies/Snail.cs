@@ -68,5 +68,6 @@ public class Snail : Enemy
     public override void OnDie()
     {
         Destroy(this.gameObject);
+        Destroy(this);
     }
 }
