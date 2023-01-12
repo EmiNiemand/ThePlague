@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     private int floorCounter = 0;
     [SerializeField] private List<String> tags;
     [SerializeField] private GameObject playerPrefab;
+    private int sceneCounter = 0;
+    public bool canSpawn = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +38,10 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
+        sceneCounter++;
         if (player == null)
         {
+            sceneCounter = 0;
             player = GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             DontDestroyOnLoad(player);
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("MainCamera"));
@@ -54,6 +59,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (sceneCounter > 1)
+        {
+            canSpawn = true;
+        }
         if (player.GetComponent<PlayerCombat>().GetHP() <= 0)
         {
             Destroy(player);
