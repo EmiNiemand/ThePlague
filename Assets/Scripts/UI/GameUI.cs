@@ -16,6 +16,9 @@ public class GameUI : MonoBehaviour
     [Space(2)]
     [SerializeField] private Slider hpBar;
     [SerializeField] private TextMeshProUGUI hpBarText;
+    [Header("Score")]
+    [Space(2)]
+    [SerializeField] private TextMeshProUGUI floorCounterText;
     
     //TODO: improve this spaghetti
     public void EquipWeapon(Sprite weaponImage)
@@ -60,6 +63,14 @@ public class GameUI : MonoBehaviour
     {
         hpBar.value = currentHP;
         UpdateHPText();
+    }
+
+    public void UpdateFloorCounter(int currentFloor)
+    {
+        if(currentFloor > 0)
+            floorCounterText.text = "FLOOR "+currentFloor;
+        else
+            floorCounterText.text = "";
     }
 
     // Helper functions

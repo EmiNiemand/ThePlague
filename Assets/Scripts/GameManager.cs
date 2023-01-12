@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 public class GameManager : MonoBehaviour
 {
     private GameObject player;
-    private int floorCounter = 0;
+    private GameUI playerUI;
     [SerializeField] private List<String> tags;
     [SerializeField] private GameObject playerPrefab;
     private int sceneCounter = 0;
@@ -30,8 +30,9 @@ public class GameManager : MonoBehaviour
 
             SceneManager.sceneLoaded += OnSceneLoad;
             player = GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            playerUI = GameObject.FindObjectOfType<GameUI>();
             DontDestroyOnLoad(player);
-            DontDestroyOnLoad(GameObject.FindObjectOfType<GameUI>());
+            DontDestroyOnLoad(playerUI);
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("MainCamera"));
         }
     }
@@ -43,12 +44,13 @@ public class GameManager : MonoBehaviour
         {
             sceneCounter = 0;
             player = GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            playerUI = GameObject.FindObjectOfType<GameUI>();
             DontDestroyOnLoad(player);
+            DontDestroyOnLoad(playerUI);
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("MainCamera"));
-            DontDestroyOnLoad(GameObject.FindObjectOfType<GameUI>());
         }
+        playerUI.UpdateFloorCounter(sceneCounter);
         player.transform.position = Vector3.zero;
-        floorCounter++;
     }
 
     public void LoadScene(String sceneName)
@@ -63,13 +65,13 @@ public class GameManager : MonoBehaviour
         {
             canSpawn = true;
         }
+        
         if (player.GetComponent<PlayerCombat>().GetHP() <= 0)
         {
             Destroy(player);
             Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
             Destroy(GameObject.Find("_GameUI"));
             SceneManager.LoadScene("Hub");
-            floorCounter = 0;
         }
         
         List<GameObject> layerOrderingList = new List<GameObject>();
