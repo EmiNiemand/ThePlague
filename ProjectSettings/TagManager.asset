@@ -49,3 +49,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Plz do not light me
+    uniqueID: 827328525
+    locked: 0
