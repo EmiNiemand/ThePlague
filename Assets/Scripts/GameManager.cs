@@ -59,19 +59,20 @@ public class GameManager : MonoBehaviour
             Destroy(GameObject.Find("_GameUI"));
             SceneManager.LoadScene("Hub");
         }
-        List<GameObject> lista = new List<GameObject>();
+        
+        List<GameObject> layerOrderingList = new List<GameObject>();
+        
         foreach (var tag in tags)
         {
-            lista.AddRange(GameObject.FindGameObjectsWithTag(tag));
+            layerOrderingList.AddRange(GameObject.FindGameObjectsWithTag(tag));
         }
 
-        lista = lista.OrderBy(x => GetDistance(x)).ToList();
+        layerOrderingList = layerOrderingList.OrderBy(x => GetDistance(x)).ToList();
         int layer = 1;
-        foreach (var obj in lista)
+        foreach (var obj in layerOrderingList)
         {
-            Debug.Log(obj.transform.position.y.ToString());
             SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
-            if (renderer == null)
+            if (!renderer)
             {
                 renderer = obj.GetComponentInChildren<SpriteRenderer>();
             }
