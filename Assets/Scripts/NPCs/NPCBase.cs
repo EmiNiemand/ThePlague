@@ -16,8 +16,16 @@ public abstract class NPCBase : MonoBehaviour
 		npcUI.SetDescription(npcInfo.description);
 		npcUI.SetDescriptionActive(false);
 	}
-	public virtual void OnBoundaryEntry() { npcUI.SetDescriptionActive(true); }
-	public virtual void OnBoundaryExit() { npcUI.SetDescriptionActive(false); }
+	public virtual void OnBoundaryEntry() 
+	{ 
+		npcUI.SetDescriptionActive(true); 
+		npcUI.SetInteractionIndicatorActive(true);
+	}
+	public virtual void OnBoundaryExit() 
+	{ 
+		npcUI.SetDescriptionActive(false);
+		npcUI.SetInteractionIndicatorActive(false);
+	}
 
 	public virtual void OnInteract()
 	{
