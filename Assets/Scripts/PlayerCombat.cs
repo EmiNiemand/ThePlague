@@ -35,6 +35,7 @@ public class PlayerCombat : MonoBehaviour
 
 		playerWeapon = GetComponentInChildren<Weapon>();
 		gameUI = GameObject.Find("_GameUI").GetComponent<GameUI>();
+        gameUI.SetMaxHP(maxHP);
 		playerUI = GetComponentInChildren<PlayerUI>();
     }
 
@@ -101,10 +102,11 @@ public class PlayerCombat : MonoBehaviour
     public void OnReceiveDamage(int damage)
     {
         if (isOnCooldown) return;
-
+        
         StartCoroutine(DamageCooldown());
 
         HP -= damage;
+        gameUI.UpdateHP(HP);
     }
 
     public void OnUpgradeHealth(int value)

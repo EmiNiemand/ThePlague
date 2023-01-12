@@ -10,6 +10,7 @@ using Object = UnityEngine.Object;
 public class GameManager : MonoBehaviour
 {
     private GameObject player;
+    private int floorCounter = 0;
     [SerializeField] private List<String> tags;
     [SerializeField] private GameObject playerPrefab;
     private int sceneCounter = 0;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(GameObject.FindObjectOfType<GameUI>());
         }
         player.transform.position = Vector3.zero;
+        floorCounter++;
     }
 
     public void LoadScene(String sceneName)
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
             Destroy(GameObject.Find("_GameUI"));
             SceneManager.LoadScene("Hub");
+            floorCounter = 0;
         }
         
         List<GameObject> layerOrderingList = new List<GameObject>();
