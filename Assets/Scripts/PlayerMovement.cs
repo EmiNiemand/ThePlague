@@ -43,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
             foreach (var hit in hits)
             {
-                if (hit.collider.gameObject.CompareTag("Environment") || hit.collider.gameObject.CompareTag("Obstacles") || hit.collider.gameObject.CompareTag("NPC"))
+                if (hit.collider.gameObject.CompareTag("Environment") || hit.collider.gameObject.CompareTag("Obstacles") 
+                || hit.collider.gameObject.CompareTag("NPC") || hit.collider.gameObject.CompareTag("Doors"))
                 {
                     canMove = false; break;
                 }
