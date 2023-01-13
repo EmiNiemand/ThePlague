@@ -23,10 +23,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Check for duplicate GameManagers
+        // --------------------------------
         var objs = GameObject.FindObjectsOfType<GameManager>();
         if (objs.Length > 1)
 
             Destroy(gameObject);
+        // Set up first GameManager
+        // ------------------------
         else
         {
             DontDestroyOnLoad(gameObject);
@@ -47,9 +50,9 @@ public class GameManager : MonoBehaviour
             sceneCounter = 0;
             ResetGame();
         }
-
-        if (sceneCounter > 1)
-            canSpawn = true;
+        // Do not spawn caretaker on the first floor
+        // -----------------------------------------
+        canSpawn = (sceneCounter > 1);
         playerUI.UpdateFloorCounter(sceneCounter);
 
         player.transform.position = Vector3.zero;
