@@ -24,10 +24,9 @@ public class GameManager : MonoBehaviour
     {
         // Check for duplicate GameManagers
         // --------------------------------
-        var objs = GameObject.FindObjectsOfType<GameManager>();
-        if (objs.Length > 1)
-
+        if(GameObject.FindObjectsOfType<GameManager>().Length > 1)
             Destroy(gameObject);
+        
         // Set up first GameManager
         // ------------------------
         else
@@ -45,11 +44,12 @@ public class GameManager : MonoBehaviour
 
         // Game over continuation
         // ----------------------
-        if (player == null)
+        if (!player)
         {
             sceneCounter = 0;
             ResetGame();
         }
+
         // Do not spawn caretaker on the first floor
         // -----------------------------------------
         canSpawn = (sceneCounter > 1);
@@ -68,30 +68,28 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void GameOver()
+    {
+        Destroy(player);
+        Destroy(GameObject.FindObjectOfType<GameUI>().gameObject);
+        
+        gameOverScreen = GameObject.
+            Instantiate(gameOverScreenPrefab, transform.position, Quaternion.identity).
+            GetComponent<GameOverUI>();
+        gameOverScreen.onRestart.AddListener(() => {
+            Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+            LoadScene("Hub");
+        });
+        gameOverScreen.onQuit.AddListener(Quit);
+
+        gameOverScreen.SetFloorCounter(sceneCounter);
+        gameOverScreen.HighScore(highScore, sceneCounter > highScore);
+        if(sceneCounter > highScore) highScore = sceneCounter;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        // Game over
-        // ---------
-        if (player && player.GetComponent<PlayerCombat>().GetHP() <= 0)
-        {
-            Destroy(player);
-            Destroy(GameObject.Find("_GameUI"));
-            
-            gameOverScreen = GameObject.
-                Instantiate(gameOverScreenPrefab, transform.position, Quaternion.identity).
-                GetComponent<GameOverUI>();
-            gameOverScreen.onRestart.AddListener(() => {
-                Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
-                LoadScene("Hub");
-            });
-            gameOverScreen.onQuit.AddListener(Quit);
-
-            gameOverScreen.SetFloorCounter(sceneCounter);
-            gameOverScreen.HighScore(highScore, sceneCounter > highScore);
-            if(sceneCounter > highScore) highScore = sceneCounter;
-        }
-
         OrderLayers();
     }
 
@@ -102,6 +100,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(playerUI);
         DontDestroyOnLoad(GameObject.FindGameObjectWithTag("MainCamera"));
+        player.GetComponent<PlayerEvents>().onDie.AddListener(GameOver);
     }
 
     private void OrderLayers()
@@ -119,23 +118,18 @@ public class GameManager : MonoBehaviour
         {
             SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
             if (!renderer)
-            {
                 renderer = obj.GetComponentInChildren<SpriteRenderer>();
-            }
 
             renderer.sortingOrder = 1000 - layer;
             layer++;
-
         }
     }
     
     private float GetDistance(GameObject obj)
     {
         SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
-        if (renderer == null)
-        {
+        if (!renderer)
             renderer = obj.GetComponentInChildren<SpriteRenderer>();
-        }
         
         return obj.transform.position.y - renderer.bounds.size.y/2;
     }

@@ -29,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3874143013788603426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3874143015541220163}
   m_Father: {fileID: 0}
@@ -49,11 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03939951529d6a1428fca3afab42c989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownTime: 1
   Damage: 1
   maxHP: 12
   heal: 0
-  cooldownTime: 1
   moveSpeed: 0.1
+  lootList:
+  - {fileID: 1796235386779822213, guid: aab3fe50a71b24f4bb52c60d6feddf24, type: 3}
 --- !u!212 &3874143013788603439
 SpriteRenderer:
   m_ObjectHideFlags: 0

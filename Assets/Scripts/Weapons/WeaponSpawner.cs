@@ -11,8 +11,8 @@ public class WeaponSpawner : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerCombat>().PickUpIndicator(true);
-            if (other.GetComponent<PlayerMovement>().isUsePressed == true)
+            other.GetComponent<PlayerEvents>().OnPickupIndicator(true);
+            if (other.GetComponent<PlayerEvents>().isUsePressed == true)
             {
                 if(other.GetComponent<PlayerCombat>().EquipWeapon(weaponPrefab))
                     Destroy(gameObject);
@@ -23,7 +23,7 @@ public class WeaponSpawner : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerCombat>().PickUpIndicator(false);
+            other.GetComponent<PlayerEvents>().OnPickupIndicator(false);
         }
     }
 }

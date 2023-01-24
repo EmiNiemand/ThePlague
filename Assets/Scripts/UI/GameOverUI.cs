@@ -18,7 +18,6 @@ public class GameOverUI : MonoBehaviour
 
     public void HighScore(int highScore, bool newHighScore)
     {
-        Debug.Log(newHighScore);
         if(newHighScore)
             this.highScore.text = "NEW HIGH SCORE!";
         else

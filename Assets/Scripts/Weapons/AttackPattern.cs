@@ -6,8 +6,8 @@ using UnityEngine;
 public abstract class AttackPattern : MonoBehaviour
 {
 	public Sprite weaponIcon;
-    protected PlayerCombat combat;
-	protected GamepadHaptics haptics;
+    protected PlayerUpgrades upgrades;
+	protected PlayerEvents playerEvents;
 	public bool isOnCooldown;
 	protected GameObject weaponInstance;
 	[SerializeField] protected GameObject weaponPrefab;
@@ -22,13 +22,13 @@ public abstract class AttackPattern : MonoBehaviour
     public void WeaponHitDetected(Enemy enemy)
 	{
 		enemy.OnReceiveDamage(damage);
-		haptics.Attack();
+		playerEvents.OnWeaponHit();
 	}
 
     protected void Setup()
     {
-		combat = gameObject.GetComponentInParent<PlayerCombat>();
-		haptics = GetComponentInParent<GamepadHaptics>();
+		upgrades = gameObject.GetComponentInParent<PlayerUpgrades>();
+		playerEvents = GetComponentInParent<PlayerEvents>();
 		isOnCooldown = false;
     }
 }

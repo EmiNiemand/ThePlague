@@ -5,8 +5,8 @@ using UnityEngine.U2D;
 
 public class APSBFusion : AttackPattern
 {
-	private Collider2D collider;
-	private SpriteShapeRenderer renderer;
+	private Collider2D weaponCollider;
+	private SpriteShapeRenderer weaponRenderer;
 
 	[Range(0, 1.0f)]
 	[SerializeField] private float attackDuration;
@@ -17,11 +17,11 @@ public class APSBFusion : AttackPattern
 
 		GetComponent<WeaponHitDetect>().pattern = this;
 
-		collider = GetComponent<PolygonCollider2D>();
-		renderer = GetComponent<SpriteShapeRenderer>();
+		weaponCollider = GetComponent<PolygonCollider2D>();
+		weaponRenderer = GetComponent<SpriteShapeRenderer>();
 
-		collider.enabled = false;
-		renderer.enabled = false;
+		weaponCollider.enabled = false;
+		weaponRenderer.enabled = false;
 	}
 
 	public override IEnumerator StartPattern()
@@ -30,19 +30,19 @@ public class APSBFusion : AttackPattern
 
 		StartCoroutine(Cooldown());
 
-		collider.enabled = true;
-		renderer.enabled = true;
+		weaponCollider.enabled = true;
+		weaponRenderer.enabled = true;
 
-		yield return new WaitForSeconds(attackDuration - combat.GetAdditionalAttackSpeed());
+		yield return new WaitForSeconds(attackDuration - upgrades.attackSpeed);
 
-		collider.enabled = false;
-		renderer.enabled = false;
+		weaponCollider.enabled = false;
+		weaponRenderer.enabled = false;
 	}
 
 	protected override IEnumerator Cooldown()
 	{
 		isOnCooldown = true;
-		yield return new WaitForSeconds(attackDuration + cooldownDuration - combat.GetAdditionalAttackSpeed());
+		yield return new WaitForSeconds(attackDuration + cooldownDuration - upgrades.attackSpeed);
 		isOnCooldown = false;
 	}
 }

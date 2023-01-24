@@ -48,7 +48,7 @@ public class APBoomerang : AttackPattern
 	{
 		isOnCooldown = true;
 		yield return new WaitUntil(()=>weaponInstance == null);
-		yield return new WaitForSeconds(cooldownDuration - combat.GetAdditionalAttackSpeed());
+		yield return new WaitForSeconds(cooldownDuration - upgrades.attackSpeed);
 		isOnCooldown = false;
 	}
 
@@ -56,7 +56,7 @@ public class APBoomerang : AttackPattern
 	private bool isOnPosition(Vector3 destination)
 	{
 		weaponInstance.transform.position = Vector3.MoveTowards(weaponInstance.transform.position, destination, speed * Time.deltaTime * 4);
-		weaponInstance.transform.Rotate(0, 0, (speed + combat.GetAdditionalAttackSpeed()) * Time.deltaTime * 400);
+		weaponInstance.transform.Rotate(0, 0, (speed + upgrades.attackSpeed) * Time.deltaTime * 400);
 
 		return Vector3.Distance(weaponInstance.transform.position, destination) < 0.1f;
 	}

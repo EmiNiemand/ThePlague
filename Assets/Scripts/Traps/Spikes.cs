@@ -9,7 +9,7 @@ public class Spikes : Traps
     {
         if(col.gameObject.CompareTag("Player") && !isOnCooldown)
         {
-            col.gameObject.GetComponent<PlayerCombat>().OnReceiveDamage(damage);
+            col.gameObject.GetComponent<PlayerEvents>().OnReceiveDamage(damage);
         }
         
         else if(col.gameObject.CompareTag("Enemy") && !isOnCooldown)

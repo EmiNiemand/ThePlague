@@ -1,50 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
-using Unity.VisualScripting;
 using UnityEngine;
-using Vector2 = UnityEngine.Vector2;
 
 public class Snake : Enemy
 {
-    [SerializeField] private float moveSpeed;
-    private Rigidbody2D rb2D;
-    private GameObject player;
-
-    private bool isAwake = false;
-    private bool isAttacking = false;
     private bool isAttackOnCooldown = false;
-    private float distance;
 
     // Start is called before the first frame update
-    protected override void Start()
+    void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        rb2D = GetComponent<Rigidbody2D>();
-        base.Start();
+        base.Setup();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-            return;
-        }
-        distance = Vector2.Distance(rb2D.transform.position, player.transform.position);
-        if (distance < 15)
-        {
-            isAwake = true;
-        }
-        
+        if (!PlayerCheck()) return;
+        AwakeDistanceCheck(15);
     }
+
     void FixedUpdate()
     {
         if (!isAwake) return;
         if (isAttacking) return;
 
-        if (distance > 5) rb2D.AddForce((player.transform.position - transform.position).normalized * moveSpeed, ForceMode2D.Impulse);
+        Vector2 moveForce = (player.transform.position - transform.position).normalized * moveSpeed;
+        if (distanceToPlayer > 5) rb2D.AddForce(moveForce, ForceMode2D.Impulse);
 
         if (isAttackOnCooldown) return;
         StartCoroutine(OnAttack());
@@ -52,9 +33,9 @@ public class Snake : Enemy
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col != null && col.gameObject.CompareTag("Player"))
+        if(col.gameObject.CompareTag("Player"))
         {
-            col.gameObject.GetComponent<PlayerCombat>().OnReceiveDamage(Damage);
+            col.gameObject.GetComponent<PlayerEvents>().OnReceiveDamage(Damage);
         }
     }
 
@@ -77,6 +58,6 @@ public class Snake : Enemy
 
     public override void OnDie()
     {
-        Destroy(this.gameObject);
+        base.OnDie();
     }
 }

@@ -26,8 +26,8 @@ public class NPCCollider : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			other.GetComponent<PlayerCombat>().PickUpIndicator(true);
-			if (other.GetComponent<PlayerMovement>().isUsePressed == true)
+			other.GetComponent<PlayerEvents>().OnPickupIndicator(true);
+			if (other.GetComponent<PlayerEvents>().isUsePressed == true)
 			{
 				npc.OnInteract();
 			}

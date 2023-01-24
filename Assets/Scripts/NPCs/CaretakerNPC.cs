@@ -33,7 +33,7 @@ public class CaretakerNPC : NPCBase
         {
             if(goodie.name == chosenItem)
             {
-                FindObjectOfType<PlayerCombat>().EquipWeapon(goodie);
+                FindObjectOfType<PlayerEvents>().OnEquipWeapon(goodie);
                 break;
             }
         }

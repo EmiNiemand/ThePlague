@@ -16,7 +16,7 @@ public class Flamethrower : Traps
     private BoxCollider2D boxCollider;
     private Vector2 initBoxSize;
     private Vector2 initBoxOffset;
-    private Light2D light;
+    private Light2D flameLight;
     private float timeCounter;
     protected override void Start()
     {
@@ -25,7 +25,7 @@ public class Flamethrower : Traps
         boxCollider = GetComponent<BoxCollider2D>();
         initBoxSize = boxCollider.size;
         initBoxOffset = boxCollider.offset;
-        light = GetComponentInChildren<Light2D>();
+        flameLight = GetComponentInChildren<Light2D>();
         base.Start();
     }
     
@@ -50,14 +50,16 @@ public class Flamethrower : Traps
     {
         isOnCooldown = true;
         particles.Stop();
-        light.enabled = false;
+        flameLight.enabled = false;
         yield return StartCoroutine(ChangeCast(CollisionChangeType.Shrink));
         boxCollider.enabled = false;
+
         yield return new WaitForSeconds(cooldown);
+        
         boxCollider.enabled = true;
         particles.Play();
         yield return StartCoroutine(ChangeCast(CollisionChangeType.Expand));
-        light.enabled = true;
+        flameLight.enabled = true;
         isOnCooldown = false;
     }
 
@@ -85,7 +87,7 @@ public class Flamethrower : Traps
     {
         if(col.gameObject.CompareTag("Player"))
         {
-            col.gameObject.GetComponent<PlayerCombat>().OnReceiveDamage(damage);
+            col.gameObject.GetComponent<PlayerEvents>().OnReceiveDamage(damage);
         }
         
         else if(col.gameObject.CompareTag("Enemy"))

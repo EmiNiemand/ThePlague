@@ -315,7 +315,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.28866667, z: 0}
   m_ShapePathHash: 785168183
   m_Mesh: {fileID: 0}
-  m_InstanceId: 64328
+  m_InstanceId: 63394
 --- !u!1 &2989288246745673133
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,13 +492,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2989288248492735028}
+  - component: {fileID: 2146104025875516011}
+  - component: {fileID: 2989288248492735031}
   - component: {fileID: 2989288248492735029}
   - component: {fileID: 2989288248492735030}
   - component: {fileID: 529339216092531469}
-  - component: {fileID: 2989288248492735031}
-  - component: {fileID: 2989288248492735024}
+  - component: {fileID: 458607790609467474}
+  - component: {fileID: 7891248299658546403}
   - component: {fileID: 2989288248492735025}
   - component: {fileID: 2989288248492735026}
+  - component: {fileID: 2989288248492735024}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -524,7 +527,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2989288248492735029
+--- !u!114 &2146104025875516011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -533,44 +536,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2989288248492735027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 818ab6c5156dbda45a99af72b3cce79b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ea08fdab2c1bca44bb370796ac0efe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 5
-  cooldownTime: 0.25
---- !u!114 &2989288248492735030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2989288248492735027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f53b0b302e36d4bb459cf4ac9ebc11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashSpeed: 5
-  dashDuration: 0.1
   isUsePressed: 0
-  MoveSpeed: 2
---- !u!114 &529339216092531469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2989288248492735027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b62aa8daec76a4ab5a46229cc8269d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraOffset: {x: 0, y: 0, z: -15}
-  cameraFollowStrength: 0.25
-  cameraLerp: 0.25
-  mouseXBorder: 10
-  mouseYBorder: 10
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2989288248492735031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,8 +570,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2989288248492735029}
-        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+      - m_Target: {fileID: 2146104025875516011}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -614,8 +586,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/Attack[/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2989288248492735030}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 2146104025875516011}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -630,8 +602,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2989288248492735030}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 2146104025875516011}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
         m_MethodName: OnUse
         m_Mode: 0
         m_Arguments:
@@ -646,8 +618,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/Use[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2989288248492735029}
-        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+      - m_Target: {fileID: 2146104025875516011}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
         m_MethodName: OnSwitchWeapon
         m_Mode: 0
         m_Arguments:
@@ -662,8 +634,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/SwitchWeapon[/Keyboard/q]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2989288248492735029}
-        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+      - m_Target: {fileID: 2146104025875516011}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
         m_MethodName: OnReset
         m_Mode: 0
         m_Arguments:
@@ -678,8 +650,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/Reset[/Keyboard/r]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2989288248492735029}
-        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+      - m_Target: {fileID: 2146104025875516011}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
         m_MethodName: OnQuit
         m_Mode: 0
         m_Arguments:
@@ -694,8 +666,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/Quit[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2989288248492735030}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 2146104025875516011}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
         m_MethodName: OnDash
         m_Mode: 0
         m_Arguments:
@@ -713,7 +685,7 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2989288248492735024
+--- !u!114 &2989288248492735029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -722,12 +694,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 2989288248492735027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244e8932073702640b066ba08f2db689, type: 3}
+  m_Script: {fileID: 11500000, guid: 818ab6c5156dbda45a99af72b3cce79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSettings:
-    intensity: 0.406
-    duration: 0.23
+  <maxHP>k__BackingField: 5
+  cooldownTime: 0.25
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2989288248492735030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989288248492735027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f53b0b302e36d4bb459cf4ac9ebc11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 50
+  dashDuration: 0.1
+  moveSpeed: 10
+  moveAxis: {x: 0, y: 0}
+--- !u!114 &529339216092531469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989288248492735027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b62aa8daec76a4ab5a46229cc8269d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOffset: {x: 0, y: 0, z: -15}
+  cameraFollowStrength: 0.25
+  cameraLerp: 0.25
+  mouseBorder: {x: 10, y: 10}
+--- !u!114 &458607790609467474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989288248492735027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c764a7759559e0a46967e5d8359cfe54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7891248299658546403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989288248492735027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0681e45eb91c22b438350d4cb2d1fee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &2989288248492735025
 Rigidbody2D:
   serializedVersion: 4
@@ -779,6 +809,21 @@ PolygonCollider2D:
       - {x: -0.5084253, y: -0.2931782}
       - {x: 0.5084256, y: -0.29317808}
       - {x: 0.2764979, y: 0.11061755}
+--- !u!114 &2989288248492735024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989288248492735027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244e8932073702640b066ba08f2db689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSettings:
+    intensity: 0.406
+    duration: 0.23
 --- !u!1 &3232803000872226748
 GameObject:
   m_ObjectHideFlags: 0

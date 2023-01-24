@@ -5,49 +5,32 @@ using UnityEngine;
 
 public class Rat : Enemy
 {
-    [SerializeField] private float moveSpeed;
-    private GameObject player;
-    private Rigidbody2D rb2D;
-
-    private bool isAwake = false;
-    private bool isAttacking = false;
-    private float distance;
-
     // Start is called before the first frame update
-    protected override void Start()
+    void Start()
     {
-        player = GameObject.Find("Player");
-        rb2D = GetComponent<Rigidbody2D>();
-        base.Start();
+        base.Setup();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-            return;
-        }
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        if (distance < 20)
-        {
-            isAwake = true;
-        }
+        if (!PlayerCheck()) return;
+        AwakeDistanceCheck(20);
     }
     void FixedUpdate()
     {
         if (!isAwake) return;
         if (isAttacking) return;
 
-        if (distance > 5) rb2D.AddForce((player.transform.position - transform.position).normalized * moveSpeed, ForceMode2D.Impulse);
+        Vector2 moveForce = (player.transform.position - transform.position).normalized * moveSpeed;
 
-        rb2D.AddForce((player.transform.position - transform.position).normalized * moveSpeed * 2, ForceMode2D.Impulse);
+        if (distanceToPlayer > 5) rb2D.AddForce(moveForce, ForceMode2D.Impulse);
+        rb2D.AddForce(moveForce * 2, ForceMode2D.Impulse);
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col != null && col.gameObject.CompareTag("Player"))
+        if(col.gameObject.CompareTag("Player"))
         {
             if (!isAttacking) StartCoroutine(OnAttack(col.gameObject));
         }
@@ -56,13 +39,13 @@ public class Rat : Enemy
     private IEnumerator OnAttack(GameObject player)
     {
         isAttacking = true;
-        player.GetComponent<PlayerCombat>().OnReceiveDamage(Damage);
+        player.GetComponent<PlayerEvents>().OnReceiveDamage(Damage);
         yield return new WaitForSeconds(1);
         isAttacking = false;
     }
 
     public override void OnDie()
     {
-        Destroy(this.gameObject);
+        base.OnDie();
     }
 }

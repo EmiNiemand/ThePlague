@@ -132,3 +132,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteAfterDestruction: {fileID: 21300000, guid: 5c023add660a5fe4ca219a6ded4058d6, type: 3}
+  resourceAfterDestruction: {fileID: 1796235386779822213, guid: b712e5aa661707748927f0dd49dce62d, type: 3}
