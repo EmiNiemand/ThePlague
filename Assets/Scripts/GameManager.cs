@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame()
     {
-        player = GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        player = GameObject.Instantiate(playerPrefab, GameObject.Find("PlayerSpawn").transform.position, Quaternion.identity);
         playerUI = GameObject.FindObjectOfType<GameUI>();
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(playerUI);
