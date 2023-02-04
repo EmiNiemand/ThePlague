@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         else if(dashing)
         {
             GetComponent<PolygonCollider2D>().enabled = true;
+            GetComponentInChildren<SpriteRenderer>().color = GetComponentInChildren<SpriteRenderer>().color * new Vector4(1, 1, 1, 5);
             dashing = false;
         }
     }
@@ -74,7 +75,9 @@ public class PlayerMovement : MonoBehaviour
         if(dashing) return;
 
         dashTimer = dashDuration;
+        //TODO: move it outside maybe
         GetComponent<PolygonCollider2D>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().color = GetComponentInChildren<SpriteRenderer>().color * new Vector4(1, 1, 1, 0.2f);
         dashing = true;
     }
 }
