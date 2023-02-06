@@ -15,17 +15,15 @@ public class Rat : Enemy
     void Update()
     {
         if (!PlayerCheck()) return;
-        AwakeDistanceCheck(20);
+        AwakeDistanceCheck(30);
     }
     void FixedUpdate()
     {
         if (!isAwake) return;
         if (isAttacking) return;
 
-        Vector2 moveForce = (player.transform.position - transform.position).normalized * moveSpeed;
-
-        if (distanceToPlayer > 5) rb2D.AddForce(moveForce, ForceMode2D.Impulse);
-        rb2D.AddForce(moveForce * 2, ForceMode2D.Impulse);
+        if (distanceToPlayer > 5) MoveTowardsPlayer(moveSpeed);
+        MoveTowardsPlayer(moveSpeed * 2);
     }
 
     void OnTriggerStay2D(Collider2D col)

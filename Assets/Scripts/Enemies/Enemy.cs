@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -29,10 +30,16 @@ public abstract class Enemy : MonoBehaviour
     protected GameObject player;
     protected Rigidbody2D rb2D;
 
+    [Header("AI")] 
+    [SerializeField][Range(8, 360)] private int numberOfRaycasts = 8;
+    private float raycastAngle;
 
+    private Pathfinding pathfinding;
     // Start is called before the first frame update
     protected virtual void Setup()
     {
+        pathfinding = gameObject.AddComponent<Pathfinding>();
+
         this.gameObject.tag = "Enemy";
         HP = maxHP;
         isOnCooldown = false;
@@ -44,6 +51,8 @@ public abstract class Enemy : MonoBehaviour
 
         player = GameObject.Find("Player");
         rb2D = GetComponent<Rigidbody2D>();
+
+        raycastAngle = 360.0f / numberOfRaycasts;
     }
 
     protected bool PlayerCheck()
@@ -145,5 +154,20 @@ public abstract class Enemy : MonoBehaviour
         Destroy(this.gameObject);
         if(lootList.Count <= 0) return;
         GameObject.Instantiate(lootList[Random.Range(0, lootList.Count)], transform.position, Quaternion.identity);
+    }
+
+    protected void MoveTowardsPlayer(float speed)
+    {
+        List<Vector2> nextPositions = pathfinding.FindPath(transform.position, player.transform.position);
+
+        foreach (var next in nextPositions)
+        {
+            Debug.Log(next);
+        }
+        
+        Vector2 moveForce;
+        if (nextPositions.Count == 0) moveForce = (player.transform.position - transform.position).normalized * speed;
+        else moveForce = (nextPositions[1] - new Vector2(transform.position.x, transform.position.y)).normalized * speed;
+        rb2D.AddForce(moveForce, ForceMode2D.Impulse);
     }
 }

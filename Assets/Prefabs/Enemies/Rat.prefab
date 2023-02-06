@@ -323,6 +323,7 @@ MonoBehaviour:
   heal: 0
   moveSpeed: 0.4
   lootList: []
+  numberOfRaycasts: 8
 --- !u!212 &5650045634521690197
 SpriteRenderer:
   m_ObjectHideFlags: 0
