@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 
-public class APSBFusion : AttackPattern
+public class APSpearBoomerangFusion : AttackPattern
 {
 	private Collider2D weaponCollider;
 	private SpriteShapeRenderer weaponRenderer;
@@ -27,22 +27,26 @@ public class APSBFusion : AttackPattern
 	public override IEnumerator StartPattern()
 	{
 		if(isOnCooldown) yield break;
-
-		StartCoroutine(Cooldown());
-
-		weaponCollider.enabled = true;
+        
+		isOnCooldown = true;
+        DashPlayer(0.5f);
+		yield return new WaitForSeconds(0.1f);
+        weaponCollider.enabled = true;
 		weaponRenderer.enabled = true;
 
 		yield return new WaitForSeconds(attackDuration - upgrades.attackSpeed);
 
-		weaponCollider.enabled = false;
+        weaponCollider.enabled = false;
 		weaponRenderer.enabled = false;
+
+        DashPlayer(-0.5f);
+        
+		StartCoroutine(Cooldown());
 	}
 
 	protected override IEnumerator Cooldown()
 	{
-		isOnCooldown = true;
-		yield return new WaitForSeconds(attackDuration + cooldownDuration - upgrades.attackSpeed);
+		yield return new WaitForSeconds(cooldownDuration);
 		isOnCooldown = false;
 	}
 }

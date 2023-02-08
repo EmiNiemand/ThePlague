@@ -58,7 +58,7 @@ public class PlayerCombat : MonoBehaviour
 		return playerWeapon.SwitchWeapons();
 	}
 
-    public void OnHeal(int heal)
+    public void Heal(int heal)
     {
         HP += heal;
         if (HP > maxHP)
@@ -99,6 +99,11 @@ public class PlayerCombat : MonoBehaviour
         spriteRenderer.color = Color.white;
 
         isOnCooldown = false;
+    }
+
+    public Vector2 GetPlayerDirection()
+    {
+        return playerSprite.transform.up;
     }
 
     public void SetCanAttack(bool bCanAttack)

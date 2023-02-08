@@ -315,7 +315,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.28866667, z: 0}
   m_ShapePathHash: 785168183
   m_Mesh: {fileID: 0}
-  m_InstanceId: 63394
+  m_InstanceId: 66086
 --- !u!1 &2989288246745673133
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,9 +479,14 @@ MonoBehaviour:
   equippedWeapon: {fileID: 0}
   weapons:
   - {fileID: 3690965239533586678, guid: 20b645bc34efc844c8db752c39559aed, type: 3}
-  - {fileID: 2533782196553314095, guid: cfbb23eb61ddc9f489d31b08c32d77f9, type: 3}
   - {fileID: 1680785177784905081, guid: 5f2c0d3ca8fc2bd43a479669dfb0b9dd, type: 3}
+  - {fileID: 2533782196553314095, guid: 9a618297210183446a896db3e51b5c12, type: 3}
+  - {fileID: 2533782196553314095, guid: cfbb23eb61ddc9f489d31b08c32d77f9, type: 3}
   - {fileID: 8400326717329953454, guid: 997ef49db9d6fe541b80d3b6c655c8f5, type: 3}
+  - {fileID: 2533782196553314095, guid: ca94d3d5c44b4d441bf2a2db4e4c8d76, type: 3}
+  - {fileID: 2533782196553314095, guid: 79144354584f53c4d979c9a346f66395, type: 3}
+  - {fileID: 2533782196553314095, guid: eabbf08ccdc177d4d95dd76e217e88fe, type: 3}
+  - {fileID: 2533782196553314095, guid: cd23c4c3d86a9ce459f22dd6013693df, type: 3}
   weaponIndicator: {fileID: 2989288246587555316}
 --- !u!1 &2989288248492735027
 GameObject:

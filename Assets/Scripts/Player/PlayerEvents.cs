@@ -93,6 +93,10 @@ public class PlayerEvents : MonoBehaviour
     {
         if(context.started) playerMovement.Dash();
     }
+
+    //TODO: improve, this is a duct tape solution
+    public void ForceDash(float scaler = 1) { playerMovement.ForceDash(scaler, playerCombat.GetPlayerDirection()); }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         playerMovement.moveAxis = context.ReadValue<Vector2>();

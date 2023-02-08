@@ -17,3 +17,4 @@ MonoBehaviour:
   goodies:
   - {fileID: 3690965239533586678, guid: 20b645bc34efc844c8db752c39559aed, type: 3}
   - {fileID: 2533782196553314095, guid: cfbb23eb61ddc9f489d31b08c32d77f9, type: 3}
+  - {fileID: 2533782196553314095, guid: 79144354584f53c4d979c9a346f66395, type: 3}

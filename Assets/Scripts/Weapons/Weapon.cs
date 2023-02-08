@@ -45,6 +45,7 @@ public class Weapon : MonoBehaviour
 			{
 				equippedWeapon = Instantiate(weapon, transform).GetComponent<AttackPattern>();
 				equippedWeapon.weaponIndicator = weaponIndicator;
+				return;
 			}
 		}
 	}

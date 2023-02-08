@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class APBSFusion : AttackPattern
+public class APBoomerangScytheFusion : AttackPattern
 {
     private Vector3 cursorPos;
     private Camera mainCam;

@@ -13,8 +13,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     public Vector2 moveAxis;
+    private Vector2 dashAxis;
 
     private float dashTimer;
+    // Decides how long after dash player stays invincible
+    private float dashInvicibilityTime;
     private bool dashing;
     private List<string> dashStoppersTags = new List<string>() {
         "Environment", "Obstacles", "NPC", "Doors"};
@@ -22,33 +25,39 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private PlayerUpgrades playerUpgrades;
 
+    //TODO: move it to PlayerEvents (player is translucent on dash)
+    private SpriteRenderer playerSprite;
+
 
     void Start()
     {
         playerRigidbody = gameObject.GetComponent<Rigidbody2D>();
         playerUpgrades = gameObject.GetComponent<PlayerUpgrades>();
         moveAxis = new Vector2(0, 0);
+
+        playerSprite = GetComponentInChildren<SpriteRenderer>();
+        dashInvicibilityTime = dashDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 scaledMoveAxis = moveAxis * Time.deltaTime * 10;
+        float axisScaler = Time.deltaTime * 10;
 
         // Move player
         // -----------
-        playerRigidbody.AddForce(
-            scaledMoveAxis * (moveSpeed + playerUpgrades.moveSpeed), 
-            ForceMode2D.Impulse);
+        if(!dashing)
+            playerRigidbody.AddForce(
+                moveAxis * axisScaler * (moveSpeed + playerUpgrades.moveSpeed), 
+                ForceMode2D.Impulse);
 
         // Dash logic
         // ----------
         // TODO: improve this piece of code
-        if (dashTimer > 0)
+        if(dashTimer > 0) dashTimer -= Time.deltaTime;
+        if (dashTimer > dashInvicibilityTime)
         {
-            dashTimer -= Time.deltaTime;
-
-            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Vector2.one, transform.rotation.z, moveAxis, 1.5f);
+            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Vector2.one, transform.rotation.z, dashAxis, 1.5f);
             bool canMove = true;
 
             foreach (var hit in hits)
@@ -58,14 +67,14 @@ public class PlayerMovement : MonoBehaviour
                     canMove = false; break;
                 }
             }
-            playerRigidbody.AddForce(scaledMoveAxis * dashSpeed, ForceMode2D.Impulse);
+            playerRigidbody.AddForce(dashAxis * axisScaler * dashSpeed, ForceMode2D.Impulse);
 
             if (!canMove) { dashTimer = 0; return; }
         }
-        else if(dashing)
+        else if(dashTimer <= 0 && dashing)
         {
             GetComponent<PolygonCollider2D>().enabled = true;
-            GetComponentInChildren<SpriteRenderer>().color = GetComponentInChildren<SpriteRenderer>().color * new Vector4(1, 1, 1, 5);
+            playerSprite.color = playerSprite.color * new Vector4(1, 1, 1, 5);
             dashing = false;
         }
     }
@@ -73,11 +82,32 @@ public class PlayerMovement : MonoBehaviour
     public void Dash()
     {
         if(dashing) return;
+        if(moveAxis == Vector2.zero) return;
 
-        dashTimer = dashDuration;
-        //TODO: move it outside maybe
+        DashSetup();
+    }
+
+    // Needed for attacks that influence movement
+    public void ForceDash(float scaler = 1, Vector2 direction = new Vector2())
+    {
+        DashSetup();
+        dashAxis = direction.normalized * scaler;
+    }
+
+
+    // Helper functions
+    // ----------------
+
+    private void DashSetup()
+    {
+        dashAxis = moveAxis.normalized;
+
+        dashTimer = dashDuration + dashInvicibilityTime;
         GetComponent<PolygonCollider2D>().enabled = false;
-        GetComponentInChildren<SpriteRenderer>().color = GetComponentInChildren<SpriteRenderer>().color * new Vector4(1, 1, 1, 0.2f);
         dashing = true;
+        playerRigidbody.velocity = Vector2.zero;
+
+        //TODO: move it outside maybe
+        playerSprite.color = playerSprite.color * new Vector4(1, 1, 1, 0.2f);
     }
 }

@@ -114,9 +114,19 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void OnReceiveDamage(int Damage)
+    public void OnReceiveDamage(int Damage, 
+                                float knockbackForce=0, 
+                                Vector2 knockbackSource = new Vector2())
     {
         if(isOnCooldown) return;
+
+        Debug.Log(knockbackSource);
+        Debug.Log((Vector2)transform.position);
+
+        if(knockbackForce > 0)
+            rb2D.AddForce(
+                ((Vector2) transform.position - knockbackSource).normalized * knockbackForce, 
+                ForceMode2D.Impulse);
 
         StartCoroutine(DamageCooldown());
 
