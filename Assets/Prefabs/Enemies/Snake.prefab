@@ -5046,6 +5046,7 @@ MonoBehaviour:
   moveSpeed: 0.25
   lootList:
   - {fileID: 1796235386779822213, guid: 4901a10a9e5f10041a9f000ce1dc74d7, type: 3}
+  dieEffect: {fileID: 7916542289410643959, guid: 864e674d35d7f844b98679682ae9be52, type: 3}
   numberOfRaycasts: 8
 --- !u!212 &3874143013788603439
 SpriteRenderer:
