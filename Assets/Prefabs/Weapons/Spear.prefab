@@ -52,7 +52,7 @@ MonoBehaviour:
   isOnCooldown: 0
   weaponPrefab: {fileID: 0}
   damage: 3
-  knockback: 40
+  knockback: 20
   cooldownDuration: 0.1
   weaponIndicator: {fileID: 0}
   attackDuration: 0.1

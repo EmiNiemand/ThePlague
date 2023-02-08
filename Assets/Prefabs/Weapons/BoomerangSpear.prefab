@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 118370289673781362}
-  - component: {fileID: 3072038233202629102}
+  - component: {fileID: -6818956167518688833}
   - component: {fileID: 7438095833193268357}
   - component: {fileID: 8070876243966018583}
   - component: {fileID: 1677838028303001292}
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3072038233202629102
+--- !u!114 &-6818956167518688833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,14 +45,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2533782196553314095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a406438ca3a8a4d498a45521d6255494, type: 3}
+  m_Script: {fileID: 11500000, guid: 26ebdab685e83af4f894976e93720e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponIcon: {fileID: 0}
   isOnCooldown: 0
   weaponPrefab: {fileID: 0}
   damage: 3
-  knockback: 20
+  knockback: 40
   cooldownDuration: 0.1
   weaponIndicator: {fileID: 0}
   attackDuration: 0.1

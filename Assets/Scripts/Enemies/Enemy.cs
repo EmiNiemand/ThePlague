@@ -21,6 +21,7 @@ public abstract class Enemy : MonoBehaviour
 
     [Header("Loot")]
     [SerializeField] protected List<GameObject> lootList;
+    [SerializeField] protected GameObject dieEffect;
     protected int HP;
     protected float distanceToPlayer;
     private bool isOnCooldown;
@@ -164,6 +165,7 @@ public abstract class Enemy : MonoBehaviour
         Destroy(this.gameObject);
         if(lootList.Count <= 0) return;
         GameObject.Instantiate(lootList[Random.Range(0, lootList.Count)], transform.position, Quaternion.identity);
+        GameObject.Destroy(GameObject.Instantiate(dieEffect, transform.position, Quaternion.identity), 5.0f);
     }
 
     protected void MoveTowardsPlayer(float speed)
