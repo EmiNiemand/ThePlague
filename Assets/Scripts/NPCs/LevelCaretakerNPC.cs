@@ -58,9 +58,14 @@ public class LevelCaretakerNPC : NPCBase
 
     private Dictionary<string, Sprite> GetItemsDict()
     {
+        var equippedWeapon = FindObjectOfType<Weapon>();
         Dictionary<string, Sprite> result = new Dictionary<string, Sprite>();
         foreach (GameObject item in caretakerInfo.GetGoodies(3))
         {
+            if(item.name == equippedWeapon.firstWeapon || 
+               item.name == equippedWeapon.secondWeapon) 
+                continue;
+
             result.Add(item.name, item.GetComponent<AttackPattern>().weaponIcon);
         }
 

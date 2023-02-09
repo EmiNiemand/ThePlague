@@ -6,8 +6,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 	//temp
-	private string firstWeapon;
-	private string secondWeapon;
+	public string firstWeapon;
+	public string secondWeapon;
 	public AttackPattern equippedWeapon;
 	[SerializeField] private List<GameObject> weapons;
 	[SerializeField] private WeaponIndicator weaponIndicator;
