@@ -44,7 +44,7 @@ public class Snake : Enemy
     {
         isAttacking = true;
         Vector2 destination = (player.transform.position - transform.position);
-        rb2D.AddForce(destination.normalized * moveSpeed * 100, ForceMode2D.Impulse);
+        rb2D.AddForce(destination.normalized * moveSpeed * 75, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.5f);
         isAttacking = false;
         StartCoroutine(OnAttackCooldown());
