@@ -21,7 +21,6 @@ public class PlayerResources : MonoBehaviour
 
     public bool ChangeResource(ResourceType resourceType, int amount) 
     {
-        Debug.Log(resourceType.ToString() + amount.ToString());
         if(amount < 0 && resourceAmount[resourceType] < -amount) return false;
 
         resourceAmount[resourceType] += amount;

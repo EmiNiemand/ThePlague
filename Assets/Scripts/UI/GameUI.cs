@@ -56,6 +56,7 @@ public class GameUI : MonoBehaviour
     { 
         hpBar.maxValue = maxHP; 
         hpBar.value = maxHP;
+        hpBar.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(maxHP*67, 68);
     }
 
     public void UpdateHP(int currentHP)

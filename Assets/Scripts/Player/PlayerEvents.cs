@@ -41,6 +41,7 @@ public class PlayerEvents : MonoBehaviour
     // Class variables
     // ---------------
     public bool isUsePressed = false;
+    public GameObject damageIndicator;
     // Pass-through event
     public UnityEvent onDie;
 
@@ -119,7 +120,11 @@ public class PlayerEvents : MonoBehaviour
     public void OnReceiveDamage(int damage)
     {
         if(playerCombat.ReceiveDamage(damage))
+        {
             gameUI.UpdateHP(playerCombat.HP);
+            GameObject damageInstance = GameObject.Instantiate(damageIndicator, transform.position, Quaternion.identity);
+            damageInstance.GetComponent<DamageIndicator>().ShowDamage(damage, Color.red);
+        }
     }
 
     // Resources
