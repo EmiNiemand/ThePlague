@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf555d7619e33ef4f987ef82b5ffd87a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallHitEffect: {fileID: 3737464747983222440, guid: 9a7af485065d34d4f99c37533de794e5, type: 3}
   pattern: {fileID: 0}
 --- !u!114 &5431925824107880216
 MonoBehaviour:

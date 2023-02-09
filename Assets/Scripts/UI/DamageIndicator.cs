@@ -13,6 +13,6 @@ public class DamageIndicator : MonoBehaviour
         damageIndicatorText.text = damage.ToString();
         if(color != new Color())
             damageIndicatorText.color = color;
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 2.0f);
     }
 }
