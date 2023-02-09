@@ -34,7 +34,7 @@ public class EnemiesSpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         int enemyAmount = UnityEngine.Random.Range(minEnemiesCount, maxEnemiesCount);
         int index;
 
@@ -63,7 +63,7 @@ public class EnemiesSpawner : MonoBehaviour
 
     IEnumerator DestroySequence()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         _doors.SetActive(false);
         Destroy(this);
     }    

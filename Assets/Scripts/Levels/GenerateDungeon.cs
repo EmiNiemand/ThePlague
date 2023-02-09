@@ -23,31 +23,31 @@ public class GenerateDungeon : MonoBehaviour
     
     // Settings for randomizing spawn prefabs
     [SerializeField] private List<GameObject> spawnPrefabs;
-    [Range(0, 4)]
+    [Range(0, 9)]
     [SerializeField] private int minSpawnIndex = 0;
-    [Range(0, 4)]
-    [SerializeField] private int maxSpawnIndex = 4;
+    [Range(0, 9)]
+    [SerializeField] private int maxSpawnIndex = 9;
     
     // Settings for randomizing corridor prefabs
     [SerializeField] private List<GameObject> corridorPrefabs;
-    [Range(0, 4)]
+    [Range(0, 9)]
     [SerializeField] private int minCorridorIndex = 0;
-    [Range(0, 4)]
-    [SerializeField] private int maxCorridorIndex = 4;
+    [Range(0, 9)]
+    [SerializeField] private int maxCorridorIndex = 9;
     
     // Settings for randomizing room prefabs
     [SerializeField] private List<GameObject> roomPrefabs;
-    [Range(0, 6)]
+    [Range(0, 15)]
     [SerializeField] private int minRoomIndex = 0;
-    [Range(0, 6)]
-    [SerializeField] private int maxRoomIndex = 6;
+    [Range(0, 15)]
+    [SerializeField] private int maxRoomIndex = 15;
     
     // Settings for randomizing boss room prefabs
     [SerializeField] private List<GameObject> bossRoomPrefabs;
-    [Range(0, 2)]
+    [Range(0, 9)]
     [SerializeField] private int minBossRoomIndex = 0;
-    [Range(0, 2)]
-    [SerializeField] private int maxBossRoomIndex = 2;
+    [Range(0, 9)]
+    [SerializeField] private int maxBossRoomIndex = 9;
 
     private void OnEnable()
     {

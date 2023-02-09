@@ -306,16 +306,26 @@ MonoBehaviour:
   - {fileID: 6558384531721188350, guid: 61f008eded26c6b428c5331165db6fcb, type: 3}
   - {fileID: 6558384531721188350, guid: cec243ace7998794e897444d5879dcd0, type: 3}
   - {fileID: 6558384531721188350, guid: b43798e30202c934fbb3d2aa12b9bc23, type: 3}
+  - {fileID: 6558384531721188350, guid: f69521f36d83ff5478b13364c23e1fb8, type: 3}
+  - {fileID: 6558384531721188350, guid: 6bac6b78f3bc4e742aee598aa75cb726, type: 3}
+  - {fileID: 6558384531721188350, guid: 38cd1a36cf3da7e4c877992f92123af7, type: 3}
+  - {fileID: 6558384531721188350, guid: 4a515c67ee198e84da6703d63278d99c, type: 3}
+  - {fileID: 6558384531721188350, guid: 978b011d5ecb4ac48baff54b9b313943, type: 3}
   minSpawnIndex: 0
-  maxSpawnIndex: 4
+  maxSpawnIndex: 9
   corridorPrefabs:
   - {fileID: 6558384531721188350, guid: 2247aa39b33925a44bcd32965c23121a, type: 3}
   - {fileID: 6558384531721188350, guid: ce3b4a0eb3925024ba745cca1a2a3f25, type: 3}
   - {fileID: 6558384531721188350, guid: c2b69eb5ce041f741b0f6575deee1411, type: 3}
   - {fileID: 6558384531721188350, guid: 5c987c69c779e974e92f2c4faa79d2a5, type: 3}
   - {fileID: 6558384531721188350, guid: 6443b70510aef2d479c2753451ecb483, type: 3}
+  - {fileID: 6558384531721188350, guid: 12761d4de74ad394bbab8ba67d5f3a77, type: 3}
+  - {fileID: 6558384531721188350, guid: 8271940506288944dbb379caefb247fb, type: 3}
+  - {fileID: 6558384531721188350, guid: e0e01eaed2b550a4b83845ea1bff267c, type: 3}
+  - {fileID: 6558384531721188350, guid: a078cd525181e794ba1bdfa9780d5b4a, type: 3}
+  - {fileID: 6558384531721188350, guid: b9f23479f0aa1d749a8b244442c6fb7b, type: 3}
   minCorridorIndex: 0
-  maxCorridorIndex: 4
+  maxCorridorIndex: 9
   roomPrefabs:
   - {fileID: 6558384531721188350, guid: 6c8bbf22ef84f4d4ea9b5813925fc22b, type: 3}
   - {fileID: 6558384531721188350, guid: 0bbe3df59c822884899474b41eea4e65, type: 3}
@@ -325,14 +335,29 @@ MonoBehaviour:
   - {fileID: 6558384531721188350, guid: 149b1065d3a09fc43992f598f1e79947, type: 3}
   - {fileID: 6558384531721188350, guid: 85975bdced7b4144f88ada5aca27f484, type: 3}
   - {fileID: 6558384531721188350, guid: 3ce20362ea6a7874faa4b4acb6b66508, type: 3}
+  - {fileID: 6558384531721188350, guid: 2e325e6f4eef6a942b73aab16c8d52e8, type: 3}
+  - {fileID: 6558384531721188350, guid: 367f2e0e29b603b4090f1d8bafef014e, type: 3}
+  - {fileID: 6558384531721188350, guid: 51d6fc6e4afb22142b975ef9d6c11cbf, type: 3}
+  - {fileID: 6558384531721188350, guid: 20eaa9fa9c2e03e429b5f421c2c9b16b, type: 3}
+  - {fileID: 6558384531721188350, guid: 10e5ada70ee5baf4691976a555d33a9a, type: 3}
+  - {fileID: 6558384531721188350, guid: d96ca7d16d06d3b4a83563c415b71d0e, type: 3}
+  - {fileID: 6558384531721188350, guid: d4507489c0bb6874d9195e8694e27709, type: 3}
+  - {fileID: 6558384531721188350, guid: f6e92bb5a7a0f4b42a6ddb6709e0b2c9, type: 3}
   minRoomIndex: 0
-  maxRoomIndex: 6
+  maxRoomIndex: 15
   bossRoomPrefabs:
   - {fileID: 6558384531721188350, guid: ffd603e95442b9b4095e05f2f19c1f38, type: 3}
   - {fileID: 6558384531721188350, guid: 2c624e674a5a3fb4e9d53050f045c29a, type: 3}
   - {fileID: 6558384531721188350, guid: 7b216f868cca17f4bb56c79ae3bebd9f, type: 3}
+  - {fileID: 6558384531721188350, guid: 9eebad8b8d295c84db71faa34dafbc98, type: 3}
+  - {fileID: 6558384531721188350, guid: dc3ce42ba72be214e9e6ad442479e590, type: 3}
+  - {fileID: 6558384531721188350, guid: 8f4558dee29b848449485cf7a6d94b0f, type: 3}
+  - {fileID: 6558384531721188350, guid: 568a38af94cd8ad409a3e89295f6b73b, type: 3}
+  - {fileID: 6558384531721188350, guid: fb05d77dcd317ab40970f578c6e120f8, type: 3}
+  - {fileID: 6558384531721188350, guid: 264b587ee500b2243bf261cdd368d97a, type: 3}
+  - {fileID: 6558384531721188350, guid: bca48bc171bd5474494a3e31cccc01bb, type: 3}
   minBossRoomIndex: 0
-  maxBossRoomIndex: 2
+  maxBossRoomIndex: 9
 --- !u!1 &337397208
 GameObject:
   m_ObjectHideFlags: 0
