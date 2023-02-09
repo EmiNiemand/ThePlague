@@ -5,6 +5,11 @@ using UnityEngine.Rendering;
 
 public class Dummy : Enemy
 {
+    void Start()
+    {
+        base.Setup();
+    }
+
     public override void OnDie()
     { 
         Destroy(this.gameObject);

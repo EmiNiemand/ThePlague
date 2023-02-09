@@ -21,7 +21,11 @@ public abstract class Enemy : MonoBehaviour
 
     [Header("Loot")]
     [SerializeField] protected List<GameObject> lootList;
+
+    [Header("Effects")]
     [SerializeField] protected GameObject dieEffect;
+    [SerializeField] protected GameObject damageEffect;
+
     [HideInInspector] public UnityEvent onDie;
     protected int HP;
     protected float distanceToPlayer;
@@ -50,6 +54,7 @@ public abstract class Enemy : MonoBehaviour
         barHP = GetComponentInChildren<Slider>();
         barHP.maxValue = maxHP;
         barHP.value = HP;
+        barHP.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(maxHP*33, 32);
 
         player = GameObject.Find("Player");
         rb2D = GetComponent<Rigidbody2D>();
@@ -122,12 +127,18 @@ public abstract class Enemy : MonoBehaviour
     {
         if(isOnCooldown) return;
 
-        if(knockbackForce > 0)
+        if(knockbackForce > 0 && rb2D)
             rb2D.AddForce(
                 ((Vector2) transform.position - knockbackSource).normalized * knockbackForce, 
                 ForceMode2D.Impulse);
 
         StartCoroutine(DamageCooldown());
+
+        if(damageEffect)
+        {
+            GameObject damageInstance = GameObject.Instantiate(damageEffect, transform.position, Quaternion.identity);
+            damageInstance.GetComponent<DamageIndicator>().ShowDamage(Damage);
+        }
 
         HP -= Damage;
         barHP.value = HP;
