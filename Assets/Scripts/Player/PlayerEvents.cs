@@ -145,6 +145,31 @@ public class PlayerEvents : MonoBehaviour
         return false;
     }
 
+    // Upgrades
+    // --------
+    public bool OnFullHeal(int price)
+    {
+        if(OnResourceChange(ResourceType.Coins, -price))
+        {
+            playerCombat.Heal(playerCombat.maxHP - playerCombat.HP);
+            gameUI.UpdateHP(playerCombat.HP);
+            return true;
+        }
+        return false;
+    }
+
+    public bool OnPlayerSpeedUpgrade(int value, int price)
+    {
+        Debug.Log("YEEEEEEEEEEEEEEEET");
+        if(OnResourceChange(ResourceType.Coins, -price))
+        {
+        Debug.Log("lolololololol");
+            OnUpgradeMoveSpeed(value);
+            return true;
+        }
+        return false;
+    }
+
     // Other
     // -----
     public void OnReset(InputAction.CallbackContext context)

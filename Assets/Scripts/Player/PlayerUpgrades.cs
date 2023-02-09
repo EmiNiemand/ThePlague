@@ -11,6 +11,7 @@ public class PlayerUpgrades : MonoBehaviour
     
     public void AddMoveSpeed(float amount) 
     {
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAA" + amount);
         moveSpeed += amount;
     }
     public void AddAttackSpeed(float amount) 

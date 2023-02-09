@@ -1,10 +1,13 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CaretakerNPC : NPCBase
+public class LevelCaretakerNPC : NPCBase
 {
-    protected ChooseDialogue chooseDialogue;
+    public bool offerFullHeal;
+    public bool offerPlayerUpgrade;
+    protected ChooseUpgradeDialogue chooseDialogue;
     [SerializeField] protected CaretakerScriptable caretakerInfo;
 
     // Start is called before the first frame update
@@ -13,10 +16,11 @@ public class CaretakerNPC : NPCBase
         base.npcInfo = caretakerInfo;
         base.Setup();
 
-		chooseDialogue = transform.Find("ChooseDialogue").GetComponent<ChooseDialogue>();
+		chooseDialogue = transform.Find("ChooseDialogue").GetComponent<ChooseUpgradeDialogue>();
 
         chooseDialogue.Setup(this);
-        chooseDialogue.AddItemsToSlots(GetItemsDict());
+        var chosenItem = GetItemsDict().First();
+        chooseDialogue.AddItemsToSlots(chosenItem.Key, chosenItem.Value);
 		chooseDialogue.gameObject.SetActive(false);
     }
 
@@ -28,15 +32,25 @@ public class CaretakerNPC : NPCBase
 
 	public void OnItemChoose(string chosenItem) 
 	{
-		Destroy(chooseDialogue.gameObject);
-        foreach(var goodie in caretakerInfo.goodies)
+        var playerEvents = FindObjectOfType<PlayerEvents>();
+        if(chosenItem.Equals("FullHeal")){
+            if(!playerEvents.OnFullHeal(100))
+                return;}
+        else if(chosenItem.Equals("SpeedUpgrade")){
+            if(!playerEvents.OnPlayerSpeedUpgrade(5, 100))
+                return;}
+        else
         {
-            if(goodie.name == chosenItem)
+            foreach(var goodie in caretakerInfo.goodies)
             {
-                FindObjectOfType<PlayerEvents>().OnEquipWeapon(goodie);
-                break;
+                if(goodie.name == chosenItem)
+                {
+                    playerEvents.OnEquipWeapon(goodie);
+                    break;
+                }
             }
         }
+		Destroy(chooseDialogue.gameObject);
         gameObject.transform.Translate(2, 0, 0);
         npcUI.DisableInteraction();
         base.OnInteractEnd();
