@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public abstract class Enemy : MonoBehaviour
@@ -22,6 +22,7 @@ public abstract class Enemy : MonoBehaviour
     [Header("Loot")]
     [SerializeField] protected List<GameObject> lootList;
     [SerializeField] protected GameObject dieEffect;
+    [HideInInspector] public UnityEvent onDie;
     protected int HP;
     protected float distanceToPlayer;
     private bool isOnCooldown;
@@ -162,20 +163,21 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     public virtual void OnDie()
     {
-        Destroy(this.gameObject);
-        if(lootList.Count <= 0) return;
-        GameObject.Instantiate(lootList[Random.Range(0, lootList.Count)], transform.position, Quaternion.identity);
         GameObject.Destroy(GameObject.Instantiate(dieEffect, transform.position, Quaternion.identity), 5.0f);
+        if(lootList.Count > 0)
+            GameObject.Instantiate(lootList[Random.Range(0, lootList.Count)], transform.position, Quaternion.identity);
+        onDie.Invoke();
+        Destroy(this.gameObject);
     }
 
     protected void MoveTowardsPlayer(float speed)
     {
         List<Vector2> nextPositions = pathfinding.FindPath(transform.position, player.transform.position);
 
-        foreach (var next in nextPositions)
-        {
-            Debug.Log(next);
-        }
+        // foreach (var next in nextPositions)
+        // {
+        //     Debug.Log(next);
+        // }
         
         Vector2 moveForce;
         if (nextPositions.Count == 0) moveForce = (player.transform.position - transform.position).normalized * speed;

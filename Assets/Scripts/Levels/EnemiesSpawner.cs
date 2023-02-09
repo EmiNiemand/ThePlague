@@ -11,20 +11,13 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private int minEnemiesCount;
     [SerializeField] private int maxEnemiesCount;
     private List<GameObject> _enemies;
-    private GameObject _enemySpawn;
-    private GameObject _enemyPrefab;
     private GameObject _doors;
 
     void Start()
     {
         _doors = GameObject.FindGameObjectWithTag("Doors");
-        _doors.SetActive(false);
+        if(_doors) _doors.SetActive(false);
         _enemies = new List<GameObject>();
-    }
-
-    private void Update()
-    {
-        StartCoroutine(EnemyCounter());
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -48,39 +41,30 @@ public class EnemiesSpawner : MonoBehaviour
         for (int i = 0; i < enemyAmount; i++)
         {
             index = UnityEngine.Random.Range(0, enemiesPrefabs.Count);
-            _enemyPrefab = enemiesPrefabs[index];
+            var _enemyPrefab = enemiesPrefabs[index];
             
             index = UnityEngine.Random.Range(0, enemiesSpawns.Count);
-            _enemySpawn = enemiesSpawns[index];
+            var _enemySpawn = enemiesSpawns[index];
                     
             GameObject enemy = Instantiate(_enemyPrefab, _enemySpawn.transform.position, Quaternion.identity);
+            enemy.GetComponent<Enemy>().onDie.AddListener(()=>OnEnemyDeath(enemy));
             
             _enemies.Add(enemy);
             enemiesSpawns.RemoveAt(index);
         }
     }
 
-    IEnumerator EnemyCounter()
+    void OnEnemyDeath(GameObject enemy)
     {
-        if (_enemies.Count != 0)
-        {
-            for (int i = _enemies.Count - 1; i >= 0; i--)
-            {
-                if (_enemies[i] == null)
-                {
-                    _enemies.RemoveAt(i);
-                }
-            }
-
-            if (_enemies.Count == 0)
-            {
-                yield return new WaitForSeconds(1.0f);
-                _doors.SetActive(false);
-                Destroy(this);
-            }
-        }
-
-        yield return null;
+        _enemies.Remove(enemy);
+        if(_enemies.Count <= 0)
+            StartCoroutine(DestroySequence());
     }
-    
+
+    IEnumerator DestroySequence()
+    {
+        yield return new WaitForSeconds(1.0f);
+        _doors.SetActive(false);
+        Destroy(this);
+    }    
 }
