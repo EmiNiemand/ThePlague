@@ -21,6 +21,7 @@ public class Rat : Enemy
     {
         if (!isAwake) return;
         if (isAttacking) return;
+        if (!PlayerCheck()) return;
 
         if (distanceToPlayer > 5) MoveTowardsPlayer(moveSpeed);
         MoveTowardsPlayer(moveSpeed * 2);

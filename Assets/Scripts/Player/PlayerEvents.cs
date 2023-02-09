@@ -30,6 +30,7 @@ public class PlayerEvents : MonoBehaviour
     private PlayerCombat playerCombat;
     private PlayerMovement playerMovement;
     private PlayerUpgrades playerUpgrades;
+    private PlayerResources playerResources;
     private GamepadHaptics haptics;
 
     // UI
@@ -49,6 +50,7 @@ public class PlayerEvents : MonoBehaviour
         playerCombat = GetComponent<PlayerCombat>();
         playerMovement = GetComponent<PlayerMovement>();
         playerUpgrades = GetComponent<PlayerUpgrades>();
+        playerResources = GetComponent<PlayerResources>();
         haptics = GetComponent<GamepadHaptics>();
 
 		playerUI = GetComponentInChildren<PlayerUI>();
@@ -60,7 +62,7 @@ public class PlayerEvents : MonoBehaviour
 
     public void OnPickupIndicator(bool activate)
     {
-        playerUI.OnPickUpIndicator(activate);
+        
     }
 
 	public void OnEquipWeapon(GameObject weaponPrefab)
@@ -118,6 +120,24 @@ public class PlayerEvents : MonoBehaviour
     {
         if(playerCombat.ReceiveDamage(damage))
             gameUI.UpdateHP(playerCombat.HP);
+    }
+
+    // Resources
+    // ---------
+    public bool OnResourceChange(ResourceType resourceType, int amount)
+    {
+        if(playerResources.ChangeResource(resourceType, amount))
+        {
+            switch(resourceType)
+            {
+                case ResourceType.Coins:
+                    gameUI.UpdateCoins(playerResources.resourceAmount[ResourceType.Coins]);
+                    break;
+                default: break;
+            }
+            return true;
+        }
+        return false;
     }
 
     // Other

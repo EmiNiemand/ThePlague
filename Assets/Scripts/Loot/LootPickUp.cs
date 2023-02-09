@@ -27,7 +27,7 @@ public class LootPickUp : MonoBehaviour
     {
         Debug.Log(other.tag);
         if(other.CompareTag("Player")) 
-            if(other.GetComponent<PlayerResources>().ChangeResource(resourceType, amount))
+            if(other.GetComponent<PlayerEvents>().OnResourceChange(resourceType, amount))
                 Destroy(this.gameObject);
     }
 }

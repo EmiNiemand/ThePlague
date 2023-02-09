@@ -15,10 +15,10 @@ public class GameUI : MonoBehaviour
     [Header("HP")]
     [Space(2)]
     [SerializeField] private Slider hpBar;
-    [SerializeField] private TextMeshProUGUI hpBarText;
     [Header("Score")]
     [Space(2)]
     [SerializeField] private TextMeshProUGUI floorCounterText;
+    [SerializeField] private TextMeshProUGUI coinCounterText;
     
     //TODO: improve this spaghetti
     public void EquipWeapon(Sprite weaponImage)
@@ -56,13 +56,16 @@ public class GameUI : MonoBehaviour
     { 
         hpBar.maxValue = maxHP; 
         hpBar.value = maxHP;
-        UpdateHPText();
     }
 
     public void UpdateHP(int currentHP)
     {
         hpBar.value = currentHP;
-        UpdateHPText();
+    }
+
+    public void UpdateCoins(int currentCoins)
+    {
+        coinCounterText.text = currentCoins.ToString();
     }
 
     public void UpdateFloorCounter(int currentFloor)
@@ -71,13 +74,5 @@ public class GameUI : MonoBehaviour
             floorCounterText.text = "FLOOR "+currentFloor;
         else
             floorCounterText.text = "";
-    }
-
-    // Helper functions
-    // ----------------
-
-    private void UpdateHPText()
-    {
-        hpBarText.text = hpBar.value+" / "+hpBar.maxValue;
     }
 }

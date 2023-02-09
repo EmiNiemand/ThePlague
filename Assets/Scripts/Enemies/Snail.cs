@@ -20,6 +20,7 @@ public class Snail : Enemy
     {
         if (!isAwake) return;
         if (isAttacking) return;
+        if (!PlayerCheck()) return;
 
         Vector2 moveForce = (player.transform.position - transform.position).normalized * moveSpeed;
         if (distanceToPlayer > 5) rb2D.AddForce(moveForce, ForceMode2D.Impulse);

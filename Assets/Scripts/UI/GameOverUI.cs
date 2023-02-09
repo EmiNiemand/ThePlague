@@ -27,5 +27,5 @@ public class GameOverUI : MonoBehaviour
     // These are meant to invoke Game Manager events
     // ---------------------------------------------
     public void OnRestart() { onRestart.Invoke(); }
-    public void OnQuit() { onRestart.Invoke(); }
+    public void OnQuit() { onQuit.Invoke(); }
 }

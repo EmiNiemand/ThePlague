@@ -122,9 +122,6 @@ public abstract class Enemy : MonoBehaviour
     {
         if(isOnCooldown) return;
 
-        Debug.Log(knockbackSource);
-        Debug.Log((Vector2)transform.position);
-
         if(knockbackForce > 0)
             rb2D.AddForce(
                 ((Vector2) transform.position - knockbackSource).normalized * knockbackForce, 
@@ -172,6 +169,8 @@ public abstract class Enemy : MonoBehaviour
 
     protected void MoveTowardsPlayer(float speed)
     {
+        if(!PlayerCheck()) return;
+
         List<Vector2> nextPositions = pathfinding.FindPath(transform.position, player.transform.position);
 
         // foreach (var next in nextPositions)
